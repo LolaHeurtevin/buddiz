@@ -1,8 +1,31 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect } from "react";
+import "leaflet/dist/leaflet.css";
 
 export default function Home() {
+  useEffect(() => {
+    // Dynamically import leaflet only on client
+    import("leaflet").then(L => {
+      const map = L.map("map").setView([48.8566, 2.3522], 13);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+}).addTo(map);
+    });
+  }, []);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <div id="map" style={{ height: "100vh", width: "100%" }} />
+  );
+}
+
+
+
+/*
+<div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
@@ -99,5 +122,4 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  );
-}
+    */
