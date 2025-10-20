@@ -2,5 +2,6 @@
   "appName": "Buddiz",
   "home": "Map",
   "profile": "Profile",
-  "personalityTest": "Personality Test"
+  "personalityTest": "Personality Test",
+  "settings": "Settings"
 }
