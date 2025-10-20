@@ -7,7 +7,7 @@ export default function Navbar() {
   const { t } = useTranslation();
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-gray-800 text-white">
+    <nav className="flex items-center justify-between p-4 bg-main-bordeau text-white">
       <h1 className="text-xl font-bold">{t("appName")}</h1>
       <ul className="flex gap-4">
         <li><Link href="/">{t("home")}</Link></li>
