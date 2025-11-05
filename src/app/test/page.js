@@ -1,9 +1,15 @@
 "use client";
 
+import TestForm from "@/components/TestForm";
+import { useTranslation } from "react-i18next";
+
 export default function Test() {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <h1>Test de personnalité</h1>
+      <h1 className="text-xl font-bold mb-4">{t("personality test")}</h1>
+      <TestForm></TestForm>
     </div>
   );
 }
