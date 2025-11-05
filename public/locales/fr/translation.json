@@ -2,6 +2,20 @@
   "appName": "Buddiz",
   "home": "Carte",
   "profile": "Profil",
-  "personalityTest": "Test de personnalité",
-  "settings": "Paramètres"
+  "personality test": "Test de personnalité",
+  "settings": "Paramètres",
+  "question_1": "Quel est ton hobby préféré ?",
+  "question_2": "À quelle fréquence fais-tu de l'exercice ?",
+  "question_3": "Si tu pouvais voyager n'importe où, où irais-tu ?",
+  "question_4": "Quel genre de musique préfères tu ?",
+  "question_5": "Si tu pouvais avoir n'importe quel superpouvoir, lequel serait-ce ?",
+  "sports": "Sports",
+  "sewing": "Couture",
+  "brazil": "Brésil",
+  "south africa": "Afrique du Sud",
+  "greece": "Grèce",
+  "rock": "Rock",
+  "pop": "Pop",
+  "invisibility": "Invisibilité",
+  "super strenght": "Super force"
 }
