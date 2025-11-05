@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import I18nProvider from "../components/I18nProvider";
+import BodyClassController from "../components/BodyClassController";
 
 export const metadata = {
   title: "Buddiz",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>
+        <BodyClassController exclude={["/"]} />
         <I18nProvider>
           <Navbar />
           <div className="pb-20">{children}</div>

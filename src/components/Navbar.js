@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="max-w-4xl mx-auto flex items-center justify-around p-3">
         <Link href="/" className="text-center text-sm">{t("home")}</Link>
         <Link href="/profile" className="text-center text-sm">{t("profile")}</Link>
-        <Link href="/test" className="text-center text-sm">{t("personalityTest")}</Link>
+        <Link href="/test" className="text-center text-sm">{t("personality test")}</Link>
       </div>
     </nav>
   );

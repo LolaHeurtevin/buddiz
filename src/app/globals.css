@@ -31,3 +31,24 @@ body {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
+
+/* Main page wrapper applied on <body> for consistent spacing and responsive layout */
+.app-body {
+  box-sizing: border-box;
+  /* safe area for notched phones */
+  padding-top: env(safe-area-inset-top, 1rem);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  /* ensure content isn't hidden under fixed bottom nav */
+  padding-bottom: calc(env(safe-area-inset-bottom, 0) + 5rem);
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+@media (min-width: 640px) {
+  .app-body { padding-left: 2rem; padding-right: 2rem; }
+}
+
+@media (min-width: 1024px) {
+  .app-body { padding-left: 3rem; padding-right: 3rem; }
+}
