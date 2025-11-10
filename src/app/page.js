@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
+import MapButtons from "../components/MapButtons";
 
 export default function Home() {
   const mapRef = useRef(null);
@@ -52,7 +53,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div id="map" style={{ height: "100vh", width: "100%" }} />
+    <div id="map" style={{ height: "100vh", width: "100%", position: "relative", overflow: "hidden" }} >
+      <MapButtons />
+    </div>
   );
 }
 

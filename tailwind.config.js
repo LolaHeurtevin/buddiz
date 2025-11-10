@@ -18,6 +18,7 @@ module.exports = {
         main_beige: "#fff8c0",
         main_beige: "#fff8c0",
         main_vert: "#218a0a",
+        "cta-200": "#A6D09D"
       },
     },
   },
