@@ -26,5 +26,12 @@
   "adress": "Adresse",
   "zip_code": "Code postal",
   "city": "Ville",
-  "country": "Pays"
+  "country": "Pays",
+  "organizer": "Organisateur",
+  "create_activity": "Créer une activité",
+  "Max": "Max :",
+  "persons": "personnes",
+  "Start date": "Date de début",
+  "Duration": "Durée",
+  "hours": "heures"
 }

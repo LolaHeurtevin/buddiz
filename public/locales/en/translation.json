@@ -26,5 +26,12 @@
   "adress": "Address",
   "zip_code": "Zip Code",
   "city": "City",
-  "country": "Country"
+  "country": "Country",
+  "organizer": "Organizer",
+  "create_activity": "Create Activity",
+  "Max": "Max",
+  "persons": "persons",
+  "Start date": "Start date",
+  "Duration": "Duration",
+  "hours": "hours"
 }
