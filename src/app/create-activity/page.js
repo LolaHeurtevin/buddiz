@@ -60,7 +60,7 @@ export default function CreateActivityPage() {
         onChange={handleChange}
         className="space-y-4">
         <ActivityForm />
-        <button type="submit" className="px-4 py-2 bg-main-rose text-white rounded">{t("submit")}</button>
+        <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">{t("submit")}</button>
       </form>
 
       {status === 'loading' && <p>{t('loading')}...</p>}

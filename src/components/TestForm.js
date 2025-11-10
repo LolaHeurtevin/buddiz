@@ -65,7 +65,7 @@ function DynamicForm({ fields = [], onSubmit }) {
       ))}
 
       <div>
-        <button type="submit" className="px-4 py-2 bg-main-rose text-white rounded">Submit</button>
+        <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">Submit</button>
       </div>
     </form>
   );
