@@ -17,5 +17,14 @@
   "rock": "Rock", 
   "pop": "Pop",
   "invisibility": "Invisibility",
-  "super strenght": "Super strenght"
+  "super strenght": "Super strenght",
+  "title": "Title",
+  "description": "Description",
+  "submit": "Submit",
+  "start_date": "Start Date",
+  "estimated_duration": "Estimated Duration",
+  "adress": "Address",
+  "zip_code": "Zip Code",
+  "city": "City",
+  "country": "Country"
 }
