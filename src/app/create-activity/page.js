@@ -12,12 +12,14 @@ export default function CreateActivityPage() {
     title: '',
     description: '',
     start_date: '',
-    estimated_duration: '',
+    estimated_duration: 0,
     address: '',
     zip_code: '',
     city: '',
     country: '',
-    organizer: 1
+    organizer: 1,
+    lat: null,
+    lon: null
   })
 
   const [status, setStatus] = useState(null)
@@ -30,6 +32,19 @@ export default function CreateActivityPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus('loading');
+    console.log(`adresse : ${formData.address}, ${formData.zip_code} ${formData.city}, ${formData.country}`)
+
+    // Transform address to lat/lon
+    const res = await fetch('/api/geocode', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address: `${formData.address}, ${formData.zip_code} ${formData.city}, ${formData.country}`})
+
+    })
+    const { lat, lon } = await res.json()
+    console.log(lat, lon)
+    formData.lat = lat
+    formData.lon = lon
 
     try {
       const res = await fetch('/api/activities', {
@@ -57,9 +72,8 @@ export default function CreateActivityPage() {
       <h1>Créer une activité</h1>
       <form 
         onSubmit={handleSubmit} 
-        onChange={handleChange}
         className="space-y-4">
-        <ActivityForm />
+        <ActivityForm  onChange={handleChange}/>
         <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">{t("submit")}</button>
       </form>
 

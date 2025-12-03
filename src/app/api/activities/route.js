@@ -4,11 +4,11 @@ import { supabase } from '@lib/supabaseClient'
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { title, description, start_date, estimated_duration, address, zip_code, city, country, organizer } = body
+    const { title, description, start_date, estimated_duration, address, zip_code, city, country, organizer, lat, lon } = body
 
     const { data, error } = await supabase
       .from('activity')
-      .insert([{ title, description, start_date, estimated_duration, address, zip_code, city, country, organizer }])
+      .insert([{ title, description, start_date, estimated_duration, address, zip_code, city, country, organizer, lat, lon }])
       .select()
 
     if (error) throw error
