@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import MapButtons from "../components/MapButtons";
-import ActivitiesPins from "@/components/ActivitiesPins";
+import Markers from "@/components/Markers";
 
 export default function Home() {
   const mapRef = useRef(null);
