@@ -4,8 +4,7 @@ import { createBlackIcon } from "@/lib/leaflet/customMarkers";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function Markers({ map }) {
-  const blackIcon = createBlackIcon();
+export default function MarkersInitilizaion({ map }) {
   const { t } = useTranslation();
   const [activities, setActivities] = useState([]);
   const [status, setStatus] = useState("loading");
@@ -22,6 +21,9 @@ export default function Markers({ map }) {
           setActivities(data.data);
           setStatus("success");
           console.log("Activités récupérées :", data.data);
+
+          // Créer l'icône noire de manière asynchrone
+          const blackIcon = await createBlackIcon();
 
           // Ajouter les markers
           data.data.forEach((activity) => {

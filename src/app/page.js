@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import MapButtons from "../components/MapButtons";
-import Markers from "@/components/Markers";
+import MarkersInitialization from "@/components/Markers";
 
 export default function Home() {
   const mapRef = useRef(null);
@@ -78,7 +78,7 @@ export default function Home() {
 
   return (
     <div id="map" style={{ height: "100vh", width: "100%", position: "relative", overflow: "hidden" }} >
-      {isMapReady && <ActivitiesPins map={mapRef.current} />}
+      {isMapReady && <MarkersInitialization map={mapRef.current} />}
       <MapButtons />
     </div>
   );

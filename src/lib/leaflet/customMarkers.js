@@ -1,10 +1,11 @@
 "use client";
-import L from "leaflet";
 
-export function createBlackIcon() {
+export async function createBlackIcon() {
+  const L = await import("leaflet");
+
   const BlackIcon = L.Icon.extend({
     options: {
-      iconSize: [38, 38],
+      iconSize: [24, 32],
       iconAnchor: [19, 38],
       popupAnchor: [0, -38],
     }
