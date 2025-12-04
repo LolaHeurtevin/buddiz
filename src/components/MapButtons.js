@@ -15,14 +15,14 @@ export default function MapButtons() {
         <button 
             style={{
                 position: 'absolute',
-                bottom: '20px',
+                bottom: '100px',
                 right: '20px',
                 zIndex: 1000,
             }} 
             type="button" 
             onClick={createActivity} 
             className={`px-4 py-2 rounded bg-cta-200 text-white`}>
-            <Image src="/public/icons/plus-lg.png" alt="Create Activity" width={24} height={24} />
+            <i className="bi bi-plus text-3xl" aria-label="Create activity"></i>
         </button>
     );
 }
