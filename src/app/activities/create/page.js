@@ -1,7 +1,7 @@
 "use client"
 
 import { title } from 'process';
-import ActivityForm from '../../components/ActivityForm'
+import ActivityForm from '@components/Activities/ActivityForm'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
