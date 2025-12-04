@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ActivitiesList from "@/components/ActivitiesList";
+import ActivitiesList from "@/components/Activities/ActivitiesList";
 
 export default function Activities() {
   const [data, setData] = useState([]);
