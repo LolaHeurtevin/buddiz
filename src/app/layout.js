@@ -1,4 +1,5 @@
 import "./globals.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../components/Navbar";
 import I18nProvider from "../components/I18nProvider";
 import BodyClassController from "../components/BodyClassController";
