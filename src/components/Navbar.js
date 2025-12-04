@@ -11,6 +11,7 @@ export default function Navbar() {
       style={{ paddingBottom: 'env(safe-area-inset-bottom)', zIndex: 2147483647 }}>
       <div className="max-w-4xl mx-auto flex items-center justify-around p-3">
         <Link href="/" className="text-center text-sm">{t("home")}</Link>
+        <Link href="/activities" className="text-center text-sm">{t("activities")}</Link>
         <Link href="/profile" className="text-center text-sm">{t("profile")}</Link>
         <Link href="/test" className="text-center text-sm">{t("personality test")}</Link>
       </div>
