@@ -8,7 +8,7 @@ export default function MapButtons() {
     const router = useRouter()
 
     function createActivity() {
-        router.push('/create-activity') 
+        router.push('/activities/create') 
     }
 
     return (
