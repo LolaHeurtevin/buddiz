@@ -12,7 +12,9 @@ export default function CreateActivityPage() {
     title: '',
     description: '',
     start_date: '',
+    start_time: '',
     estimated_duration: 0,
+    max_participants: 20,
     address: '',
     zip_code: '',
     city: '',
@@ -54,6 +56,7 @@ export default function CreateActivityPage() {
     const requiredFields = [
       'title',
       'start_date',
+      'start_time',
       'estimated_duration',
       'address',
       'zip_code',
