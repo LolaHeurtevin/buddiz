@@ -20,10 +20,18 @@ export default function ActivityForm( { onChange } ) {
                 onChange={onChange}
             />
                 
-            <label className="block text-sm font-medium mb-1" htmlFor="start_date">{t("start_date")}</label>
+            <label className="block text-sm font-medium mb-1" htmlFor="start_date">{t("Start date")}</label>
             <input 
                 type="date" 
                 id="start_date" 
+                className="border p-2 rounded w-full" 
+                onChange={onChange}
+            />
+
+            <label className="block text-sm font-medium mb-1" htmlFor="start_time">{t("Start time")}</label>
+            <input 
+                type="time" 
+                id="start_time" 
                 className="border p-2 rounded w-full" 
                 onChange={onChange}
             />
@@ -36,7 +44,15 @@ export default function ActivityForm( { onChange } ) {
                 onChange={onChange}
             />
 
-            <label className="block text-sm font-medium mb-1" htmlFor="address">{t("address")}</label>
+            <label className="block text-sm font-medium mb-1" htmlFor="max_participants">{t("Maximum number of participants")}</label>
+            <input 
+                type="number" 
+                id="max_participants" 
+                className="border p-2 rounded w-full" 
+                onChange={onChange}
+            />
+
+            <label className="block text-sm font-medium mb-1" htmlFor="address">{t("Address")}</label>
             <input 
                 type="text" id="address" 
                 className="border p-2 rounded w-full" 
