@@ -41,23 +41,51 @@ export default function CreateActivityPage() {
       body: JSON.stringify({ address: `${formData.address}, ${formData.zip_code} ${formData.city}, ${formData.country}`})
 
     })
-    const { lat, lon } = await res.json()
-    console.log(lat, lon)
-    formData.lat = lat
-    formData.lon = lon
+    const { lat, lon } = await res.json();
+    if (!lat || !lon) {
+      setStatus('invalid_address');
+      return;
+    }
+
+    // Ajoutez les coordonnées au formData
+    const updatedFormData = { ...formData, lat, lon };
+
+    // Validation des champs requis
+    const requiredFields = [
+      'title',
+      'start_date',
+      'estimated_duration',
+      'address',
+      'zip_code',
+      'city',
+      'country',
+      'organizer',
+      'lat',
+      'lon',
+    ];
+
+    for (const field of requiredFields) {
+      if (!updatedFormData[field] || updatedFormData[field] === 0) {
+        setStatus('invalid_data');
+        console.error(`Le champ requis "${field}" est manquant ou invalide.`);
+        return;
+      }
+    }
 
     try {
       const res = await fetch('/api/activities', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
-      })
+        body: JSON.stringify(updatedFormData),
+      });
 
-      const result = await res.json()
+      const result = await res.json();
       if (result.success) {
         setStatus('success');
+        // ajouter redirection vers la carte
+        window.location.href = '/';
       } else {
         setStatus('error');
       }
@@ -79,6 +107,7 @@ export default function CreateActivityPage() {
 
       {status === 'loading' && <p>{t('loading')}...</p>}
       {status === 'success' && <p className="text-green-600">{t('activity_created')}</p>}
+      {status === 'invalid_address' && <p className="text-green-600">{t('Invalid address')}</p>}
       {status === 'error' && <p className="text-red-600">{t('error')}</p>}
     </div>
   )
