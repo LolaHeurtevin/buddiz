@@ -2,7 +2,7 @@
   "appName": "Buddiz",
   "home": "Map",
   "profile": "Profile",
-  "activities": "Activities",
+  "Activities": "Activities",
   "personality test": "Personality Test",
   "settings": "Settings",
   "question_1": "What is your favorite hobby ?",
@@ -24,7 +24,7 @@
   "submit": "Submit",
   "start_date": "Start Date",
   "estimated_duration": "Estimated Duration",
-  "address": "Address",
+  "Address": "Address",
   "zip_code": "Zip Code",
   "city": "City",
   "country": "Country",
@@ -33,7 +33,10 @@
   "Max": "Max",
   "persons": "persons",
   "Start date": "Start date",
+  "Start time": "Start time",
   "Duration": "Duration",
   "hours": "hours",
-  "Invalid address": "Invalid address"
+  "Invalid address": "Invalid address",
+  "Maximum number of participants": "Maximum number of participants",
+  "Participants": "Participants"
 }
