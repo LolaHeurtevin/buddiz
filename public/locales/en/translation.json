@@ -34,5 +34,6 @@
   "persons": "persons",
   "Start date": "Start date",
   "Duration": "Duration",
-  "hours": "hours"
+  "hours": "hours",
+  "Invalid address": "Invalid address"
 }
