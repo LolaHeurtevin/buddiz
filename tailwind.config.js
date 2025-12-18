@@ -46,7 +46,13 @@ module.exports = {
 
         // NEUTRALS
         "neutrals-100": "#F4F4F4",
+
+        "grey-200": "#DADADA",
       },
+      fontFamily: {
+        'body': ['Dongle', 'sans-serif'],
+        'heading': ['Dongle', 'sans-serif'],
+      }
     },
   },
   plugins: [],
