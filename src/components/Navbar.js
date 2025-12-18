@@ -14,7 +14,7 @@ export default function Navbar() {
           <i className="bi bi-map-fill text-3xl" aria-label={t("home")}></i>
         </Link>
         <Link href="/activities" className="text-center text-sm">
-          <i className="bi bi-pass-fill text-3xl" aria-label={t("activities")}></i>
+          <i className="bi bi-pass-fill text-3xl" aria-label={t("Activities")}></i>
         </Link>
         <Link href="/shop" className="text-center text-sm">
           <i className="bi bi-bag-fill text-3xl" aria-label={t("shop")}></i>
