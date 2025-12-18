@@ -3,6 +3,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../components/Navbar";
 import I18nProvider from "../components/I18nProvider";
 import BodyClassController from "../components/BodyClassController";
+import TopButtons from "../components/TopButtons";
 
 export const metadata = {
   title: "Buddiz",
@@ -15,7 +16,6 @@ export const metadata = {
   },
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
         <BodyClassController exclude={["/"]} />
         <I18nProvider>
           <Navbar />
+          <TopButtons />
           <div className="pb-20">{children}</div>
         </I18nProvider>
       </body>
