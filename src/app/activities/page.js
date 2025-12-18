@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import ActivitiesList from "@/components/Activities/ActivitiesList";
+import { useTranslation } from "react-i18next";
 
 export default function Activities() {
+  const { t } = useTranslation();
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -30,6 +33,7 @@ export default function Activities() {
 
   return (
     <div>
+      <h1>{t('Activities')}</h1>
       <ActivitiesList data={data} />
     </div>
   );
