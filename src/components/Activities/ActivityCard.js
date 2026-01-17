@@ -19,20 +19,36 @@ export default function ActivityCard({ activity }) {
           key={activity.id}
           className="p-4 border rounded-xl bg-tertiary-200 shadow-sm text-main-bordeau"
       >
+          <img></img>
           <h2 className="mb-1">{activity.title}</h2>
-          <p>{t("Max")}: {activity.max_participants} {t("persons")}</p>
-          <p>{t("Start date")}: {activity.start_date}</p>
-          <p>{t("Duration")}: {activity.estimated_duration} {t("hours")}</p>
+          <div className="flex flex-row flex-wrap gap-4">
+            <div className="justiy-center items-center text-center">
+              <i className="bi bi-pin-map-fill text-xl text-main-pink" aria-label={t("Address")} />
+              <p>{activity.address}<br/>{activity.zip_code} {activity.city}</p>
+            </div>
+
+            <div className="justiy-center items-center text-center">
+              <i className="bi bi-people-fill text-xl text-main-pink" aria-label={t("Max")}/>
+              <p>/{activity.max_participants}</p>
+            </div>
+
+            <div className="justiy-center items-center text-center">
+              <i className="bi bi-calendar-fill text-xl text-main-pink" aria-label={t("Start date")} />
+              <p>{activity.start_date}</p>
+            </div>
+
+            <div className="justiy-center items-center text-center">
+              <i className="bi bi-clock-fill text-xl text-main-pink" aria-label={t("Start time")} />
+              <p>{activity.start_time}</p>
+            </div>
+          </div>
+
           <button
-            style={{
-              position: 'absolute',
-              bottom: '5%',
-              right: '2%',
-              zIndex: 1000,
-            }} 
             onClick={participate}
-            className={`px-4 py-2 rounded-xl bg-cta-200 text-black`}>
-              <i className="bi bi-plus text-3xl" aria-label="Participate" />
+            className={`px-4 py-2 rounded-xl bg-cta-200 text-black self-end ml-auto`}
+            style={{ display: 'block' }}
+          >
+            <i className="bi bi-plus text-3xl" aria-label="Participate" />
           </button>
       </div>
     </Link>
