@@ -1,7 +1,7 @@
 "use client";
 import { useTranslation } from "react-i18next";
 
-export default function ActivityForm( { onChange } ) {
+export default function ActivityForm( { onChange, formData = {} } ) {
     const { t } = useTranslation();
 
     return (
@@ -10,6 +10,7 @@ export default function ActivityForm( { onChange } ) {
             <input 
                 id="title" 
                 className="border p-2 rounded w-full" 
+                value={formData.title || ''}
                 onChange={onChange}
             />
 
@@ -17,6 +18,7 @@ export default function ActivityForm( { onChange } ) {
             <textarea 
                 id="description" 
                 className="border p-2 rounded w-full" 
+                value={formData.description || ''}
                 onChange={onChange}
             />
                 
@@ -25,6 +27,7 @@ export default function ActivityForm( { onChange } ) {
                 type="date" 
                 id="start_date" 
                 className="border p-2 rounded w-full" 
+                value={formData.start_date || ''}
                 onChange={onChange}
             />
 
@@ -33,6 +36,7 @@ export default function ActivityForm( { onChange } ) {
                 type="time" 
                 id="start_time" 
                 className="border p-2 rounded w-full" 
+                value={formData.start_time || ''}
                 onChange={onChange}
             />
 
@@ -41,6 +45,7 @@ export default function ActivityForm( { onChange } ) {
                 type="number" 
                 id="estimated_duration" 
                 className="border p-2 rounded w-full" 
+                value={formData.estimated_duration ?? ''}
                 onChange={onChange}
             />
 
@@ -49,6 +54,7 @@ export default function ActivityForm( { onChange } ) {
                 type="number" 
                 id="max_participants" 
                 className="border p-2 rounded w-full" 
+                value={formData.max_participants ?? ''}
                 onChange={onChange}
             />
 
@@ -56,6 +62,7 @@ export default function ActivityForm( { onChange } ) {
             <input 
                 type="text" id="address" 
                 className="border p-2 rounded w-full" 
+                value={formData.address || ''}
                 onChange={onChange}
             />
 
@@ -63,6 +70,7 @@ export default function ActivityForm( { onChange } ) {
             <input 
                 type="text" id="zip_code" 
                 className="border p-2 rounded w-full" 
+                value={formData.zip_code || ''}
                 onChange={onChange}
             />
 
@@ -70,6 +78,7 @@ export default function ActivityForm( { onChange } ) {
             <input 
                 type="text" id="city" 
                 className="border p-2 rounded w-full" 
+                value={formData.city || ''}
                 onChange={onChange}
             />
 
@@ -77,6 +86,7 @@ export default function ActivityForm( { onChange } ) {
             <input 
                 type="text" id="country" 
                 className="border p-2 rounded w-full" 
+                value={formData.country || ''}
                 onChange={onChange}
             />
         </div>
