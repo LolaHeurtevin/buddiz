@@ -100,7 +100,7 @@ export default function CreateActivityPage() {
 
   return (
     <div>
-      <h1>Créer une activité</h1>
+      <h1>{t('Create an activity')}</h1>
       <form 
         onSubmit={handleSubmit} 
         className="space-y-4">
@@ -109,7 +109,7 @@ export default function CreateActivityPage() {
       </form>
 
       {status === 'loading' && <p>{t('loading')}...</p>}
-      {status === 'success' && <p className="text-green-600">{t('activity_created')}</p>}
+      {status === 'success' && <p className="text-green-600">{t('Activity created')}</p>}
       {status === 'invalid_address' && <p className="text-green-600">{t('Invalid address')}</p>}
       {status === 'error' && <p className="text-red-600">{t('error')}</p>}
     </div>
