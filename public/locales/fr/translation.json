@@ -38,5 +38,10 @@
   "hours": "heures",
   "Invalid address": "Adresse invalide",
   "Maximum number of participants": "Nombre maximum de participants",
-  "Participants": "Participants"
+  "Participants": "Participants",
+  "Update activity": "Mettre à jour l'activité",
+  "Update": "Modifier",
+  "Create an activity": "Créer une activité",
+  "Activity created": "Activité créée",
+  "Activity updated": "Activité mise à jour"
 }
