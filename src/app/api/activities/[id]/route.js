@@ -51,7 +51,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-export async function DELETE({ params }) {
+export async function DELETE(req, { params }) {
   const { id } = await params;
   try {
     const { data, error } = await supabase
