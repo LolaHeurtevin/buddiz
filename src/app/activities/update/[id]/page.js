@@ -152,10 +152,10 @@ export default function UpdateActivityPage({ params }) {
         <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">{t("submit")}</button>
       </form>
 
-      {status === 'loading' && <p>{t('loading')}...</p>}
+      {status === 'loading' && <p>{t('Loading')}...</p>}
       {status === 'success' && <p className="text-green-600">{t('Activity updated')}</p>}
       {status === 'invalid_address' && <p className="text-green-600">{t('Invalid address')}</p>}
-      {status === 'error' && <p className="text-red-600">{t('error')}</p>}
+      {status === 'error' && <p className="text-red-600">{t('Error')}</p>}
     </div>
   )
 }
