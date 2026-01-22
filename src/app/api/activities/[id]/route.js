@@ -13,12 +13,13 @@ export async function GET(req, { params }) {
 
     return new Response(JSON.stringify({ success: true, data }), {
       status: 200,
+      headers: { 'Content-Type': 'application/json' }
     });
   } catch (err) {
     console.error(err);
     return new Response(
       JSON.stringify({ success: false, error: err.message }),
-      { status: 500 }
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
 }
@@ -37,9 +38,39 @@ export async function PUT(req, { params }) {
 
     if (error) throw error
 
-    return new Response(JSON.stringify({ success: true, data }), { status: 201 })
+    return new Response(JSON.stringify({ success: true, data }), { 
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    })
   } catch (err) {
     console.error(err)
-    return new Response(JSON.stringify({ success: false, error: err.message }), { status: 500 })
+    return new Response(JSON.stringify({ success: false, error: err.message }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
+  }
+}
+
+export async function DELETE({ params }) {
+  const { id } = await params;
+  try {
+    const { data, error } = await supabase
+      .from('activity')
+      .delete()
+      .eq('id', id)
+      .select()
+
+    if (error) throw error
+
+    return new Response(JSON.stringify({ success: true, data }), { 
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    })
+  } catch (err) {
+    console.error(err)
+    return new Response(JSON.stringify({ success: false, error: err.message }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 }
