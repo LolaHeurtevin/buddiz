@@ -35,14 +35,16 @@ export default function Activity({ params }) {
 
   return (
     <div>
-      <Link href={`/activities/update/${encodeURIComponent(id)}`} key={id}>
-      <div
-          key={id}
-          className="p-4 border rounded-xl bg-tertiary-200 shadow-sm text-main-bordeau"
-      >
-        {t("Update")}
-      </div> 
-    </Link>
+      <Link className="p-4 border rounded-xl bg-tertiary-200 shadow-sm text-main-bordeau" href={`/activities/update/${encodeURIComponent(id)}`}>
+          {t("Update")}
+      </Link>
+      <Link className="p-4 border rounded-xl text-tertiary-200 shadow-sm bg-main-bordeau" href={`/activities/delete/${encodeURIComponent(id)}`}>
+          {t("Delete")}
+      </Link>
+      <Link className="p-4 border rounded-xl text-tertiary-200 shadow-sm bg-main-bordeau" href={`/activities/update/${encodeURIComponent(id)}`}>
+          {t("Change organizer")}
+      </Link>
+
       <ActivityDetail activity={data} />
     </div>
   );
