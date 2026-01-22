@@ -4,11 +4,11 @@ import { supabase } from '@lib/supabaseClient'
 export async function POST(req) {
   try {
     const body = await req.json()
-    const { title, description, start_date, start_time, estimated_duration, max_participants, address, zip_code, city, country, organizer, lat, lon } = body
+    const { title, description, start_date, start_time, estimated_duration, max_participants, address, zip_code, city, country, organizer, lat, lon, category, girl_power, queer_power } = body
 
     const { data, error } = await supabase
       .from('activity')
-      .insert([{ title, description, start_date, start_time, estimated_duration, max_participants, address, zip_code, city, country, organizer, lat, lon }])
+      .insert([{ title, description, start_date, start_time, estimated_duration, max_participants, address, zip_code, city, country, organizer, lat, lon, category, girl_power, queer_power }])
       .select()
 
     if (error) throw error
@@ -28,7 +28,7 @@ export async function GET() {
 
     if (error) throw error
 
-    return new Response(JSON.stringify({ success: true, data }), { status: 201 })
+    return new Response(JSON.stringify({ success: true, data }), { status: 200 })
   } catch (err) {
     console.error(err)
     return new Response(JSON.stringify({ success: false, error: err.message }), { status: 500 })
