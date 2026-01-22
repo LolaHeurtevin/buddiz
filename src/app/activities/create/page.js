@@ -21,14 +21,18 @@ export default function CreateActivityPage() {
     country: '',
     organizer: 1,
     lat: null,
-    lon: null
+    lon: null,
+    category: '',
+    girl_power: false,
+    queer_power: false,
   })
 
   const [status, setStatus] = useState(null)
 
   function handleChange(e) {
-    const { id, value } = e.target
-    setFormData(prev => ({ ...prev, [id]: value }))
+    const { id, value, type, checked } = e.target
+    const fieldValue = type === 'checkbox' ? checked : value
+    setFormData(prev => ({ ...prev, [id]: fieldValue }))
   }
 
   async function handleSubmit(e) {
@@ -65,6 +69,7 @@ export default function CreateActivityPage() {
       'organizer',
       'lat',
       'lon',
+      'category',
     ];
 
     for (const field of requiredFields) {
@@ -104,14 +109,14 @@ export default function CreateActivityPage() {
       <form 
         onSubmit={handleSubmit} 
         className="space-y-4">
-        <ActivityForm  onChange={handleChange}/>
+        <ActivityForm onChange={handleChange} formData={formData}/>
         <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">{t("submit")}</button>
       </form>
 
-      {status === 'loading' && <p>{t('loading')}...</p>}
+      {status === 'loading' && <p>{t('Loading')}...</p>}
       {status === 'success' && <p className="text-green-600">{t('Activity created')}</p>}
       {status === 'invalid_address' && <p className="text-green-600">{t('Invalid address')}</p>}
-      {status === 'error' && <p className="text-red-600">{t('error')}</p>}
+      {status === 'error' && <p className="text-red-600">{t('Error')}</p>}
     </div>
   )
 }
