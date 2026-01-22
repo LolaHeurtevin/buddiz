@@ -43,5 +43,16 @@
   "Update": "Modifier",
   "Create an activity": "Créer une activité",
   "Activity created": "Activité créée",
-  "Activity updated": "Activité mise à jour"
+  "Activity updated": "Activité mise à jour",
+  "Are you sure you want to delete your activity ?": "Êtes-vous sûr de vouloir supprimer votre activité ?",
+  "Delete activity": "Supprimer l'activité",
+  "Delete": "Supprimer",
+  "Change organizer": "Changer d'organisateur",
+  "Activity deleted": "Activité supprimée",
+  "Loading": "Chargement",
+  "Error": "Erreur",
+  "If you want to maintain the activity for the other users but no longer wish to be the organizer, click \"Change organizer\"": "Si vous souhaitez maintenir l'activité pour les autres utilisateurs mais ne plus être l'organisateur, cliquez sur \"Changer d'organisateur\".",
+  "Girl Power": "Girl Power",
+  "Queer Power": "Queer Power",
+  "Category": "Catégorie"
 }
