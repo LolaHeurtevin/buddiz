@@ -6,6 +6,18 @@ export default function ActivityForm( { onChange, formData = {} } ) {
 
     return (
         <div>
+            <label className="block text-sm font-medium mb-1" htmlFor="category">{t("Category")}</label>
+            <select 
+                id="category" 
+                className="border p-2 rounded w-full" 
+                value={formData.category || ''}
+                onChange={onChange}
+            >
+                <option value="">-- {t("Select a category")} --</option>
+                <option value="outdoor_activity">{t("Outdoor activity")}</option>
+                <option value="indoor_activity">{t("Indoor activity")}</option>
+            </select>
+
             <label className="block text-sm font-medium mb-1" htmlFor="title">{t("title")}</label>
             <input 
                 id="title" 
@@ -53,6 +65,8 @@ export default function ActivityForm( { onChange, formData = {} } ) {
             <input 
                 type="number" 
                 id="max_participants" 
+                min="3"
+                max="20"
                 className="border p-2 rounded w-full" 
                 value={formData.max_participants ?? ''}
                 onChange={onChange}
@@ -89,6 +103,28 @@ export default function ActivityForm( { onChange, formData = {} } ) {
                 value={formData.country || ''}
                 onChange={onChange}
             />
+
+            <label className="block text-sm font-medium mb-1 flex items-center" htmlFor="girl_power">
+                <input 
+                    type="checkbox" 
+                    id="girl_power" 
+                    className="w-5 h-5 rounded mr-2" 
+                    checked={formData.girl_power || false}
+                    onChange={onChange}
+                />
+                {t("Girl Power")}
+            </label>
+
+            <label className="block text-sm font-medium mb-1 flex items-center" htmlFor="queer_power">
+                <input 
+                    type="checkbox" 
+                    id="queer_power" 
+                    className="w-5 h-5 rounded mr-2" 
+                    checked={formData.queer_power || false}
+                    onChange={onChange}
+                />
+                {t("Queer Power")}
+            </label>
         </div>
     );
 }
