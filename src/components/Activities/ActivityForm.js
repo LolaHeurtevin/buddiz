@@ -13,7 +13,7 @@ export default function ActivityForm( { onChange, formData = {} } ) {
                 value={formData.category || ''}
                 onChange={onChange}
             >
-                <option value="">-- {t("Select a category")} --</option>
+                <option value="">{t("Select a category")}</option>
                 <option value="outdoor_activity">{t("Outdoor activity")}</option>
                 <option value="indoor_activity">{t("Indoor activity")}</option>
             </select>
