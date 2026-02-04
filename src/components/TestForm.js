@@ -1,9 +1,10 @@
-"use client";
-import { useState } from "react";
+/*"use client";
+import { useState, useEffect, use } from "react";
 import { useTranslation } from "react-i18next";
 import { capitalizeFirstLetter, toLowerIfKey } from "../lib/stringUtils";
 
 function DynamicForm({ fields = [], onSubmit }) {
+  const { t } = useTranslation();
   const initialValues = fields.reduce((acc, f) => {
     if (f.type === "checkbox") acc[f.id] = f.default || false;
     else if (f.type === "radio") acc[f.id] = f.default ?? "";
@@ -37,7 +38,7 @@ function DynamicForm({ fields = [], onSubmit }) {
 
           {field.type === "select" && (
             <select id={field.id} value={values[field.id]} onChange={e => handleChange(field.id, e.target.value)} className="border p-2 rounded w-full">
-              <option value="">--</option>
+              <option value=""></option>
               {field.options?.map(opt => (
                 <option key={opt.value ?? opt} value={opt.value ?? opt}>{capitalizeFirstLetter(toLowerIfKey(opt.label ?? opt))}</option>
               ))}
@@ -65,29 +66,156 @@ function DynamicForm({ fields = [], onSubmit }) {
       ))}
 
       <div>
-        <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">Submit</button>
+        <button type="submit" className="px-4 py-2 bg-main-pink text-white rounded">{t("Submit")}</button>
       </div>
     </form>
   );
+}*/
+
+"use client";
+
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "next/navigation";
+import Image from "next/image";
+
+function safeParseOptions(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  if (typeof value === "object") return Object.values(value);
+
+  try {
+    return JSON.parse(value);
+  } catch {
+    return [];
+  }
 }
 
 export default function TestForm() {
-  const { t } = useTranslation();
-  const sampleFields = [
-    { id: "question_1", label: t("question_1"), type: "select", options: [{ value: t("sports"), label: t("sports") }, { value: t("sewing"), label: t("sewing") }] },
-    { id: "question_2", label: t("question_2"), type: "radio", options: ["less than once a week", "once a week", "more than one a week"]  },
-    { id: "question_3", label: t("question_3"), type: "radio", options: [t("brazil"), t("south africa"), t("greece")] },
-    { id: "question_4", label: t("question_4"), type: "select", options: [{ value: t("rock"), label: t("rock") }, { value: t("pop"), label: t("pop") }] },
-    { id: "question_5", label: t("question_5"), type: "checkbox", options: [{ value: t("invisibility"), label: t("invisibility") }, { value: t("superstrenght"), label: t("superstrenght") }] },
-  ];
+  const { t, i18n } = useTranslation();
+  const { id } = useParams();
 
-  function handleSubmit(values) {
-    // For now, just log. Replace with fetch to API or state management.
-    console.log("Form values:", values);
-    alert("Submitted: " + JSON.stringify(values));
+  const [questions, setQuestions] = useState([]);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+
+  const lang = i18n.language === "fr" ? "fr" : "en";
+
+  // Fetch questions
+  useEffect(() => {
+    if (!id) return;
+
+    setLoading(true);
+    fetch(`/api/personality-tests/${id}`)
+    .then(res => res.json())
+    .then(({ success, data }) => {
+      if (!success) throw new Error("API error");
+
+      const rows = Array.isArray(data) ? data : [data];
+
+      const qs = rows.map(q => {
+        const opts = safeParseOptions(q[`options_${lang}`]);
+
+        return {
+          id: q.key,
+          label: q[`label_${lang}`],
+          options: opts.map(opt => ({
+            value: opt,
+            label: opt,
+          })),
+        };
+      });
+
+      setQuestions(qs);
+      setCurrentIdx(0);
+      setAnswers({});
+    })
+    .catch(err => {
+      setError(err.message);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+  }, [id, lang]);
+
+  function handleAnswer(value) {
+    const q = questions[currentIdx];
+    const nextAnswers = { ...answers, [q.id]: value };
+
+    setAnswers(nextAnswers);
+
+    if (currentIdx < questions.length - 1) {
+      setCurrentIdx(idx => idx + 1);
+    } else {
+      submitAnswers(nextAnswers);
+    }
   }
 
+  async function submitAnswers(finalAnswers) {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/personality-tests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          test_id: id,
+          answers: finalAnswers,
+        }),
+      });
+
+      if (!res.ok) throw new Error("API error");
+      setSubmitted(true);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // ───────────────── UI STATES ─────────────────
+
+  if (loading) return <div>{t("Loading...")}</div>;
+  if (error) return <div className="text-red-500">{error}</div>;
+  if (submitted)
+    return <div className="text-green-600">{t("Test submitted! Thank you.")}</div>;
+
+  if (!questions.length || !questions[currentIdx]) {
+    return <div>{t("No questions available")}</div>;
+  }
+
+  const q = questions[currentIdx];
+
   return (
-      <DynamicForm fields={sampleFields} onSubmit={handleSubmit} />
+    <div className="max-w-xl mx-auto">
+      <div className="mb-6">
+        <div className="flex gap-spacing-positive-md">
+          <Image
+            src="/buddy/wink.svg"
+            alt="Buddy winking"
+            width={100.369}
+            height={200}
+          />
+          <h1>{q.label}</h1>
+        </div>
+
+        <ul className="space-y-2">
+          {q.options.map(opt => (
+            <li key={opt.value}>
+              <button
+                className="px-4 py-2 bg-grey-50 border border-radius-radius-m border-border-buttons-secondary-default text-grey-950 rounded w-full"
+                onClick={() => handleAnswer(opt.value)}
+              >
+                <p>{opt.label}</p>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
