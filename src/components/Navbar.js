@@ -21,7 +21,7 @@ export default function Navbar() {
           <i className="bi bi-bag-fill text-xl text-red-500"></i>
         </Link>
         <Link href="/profile" className="flex flex-col items-center justify-center w-12 h-12 hover:opacity-70 transition-opacity" aria-label={t("profile")}>
-          <i className="bi bi-person-circle text-xl text-pink-500"></i>
+          <i className="bi bi-person-circle text-xl text-red-500"></i>
         </Link>
       </div>
     </nav>
