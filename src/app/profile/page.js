@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@components/Buttons/TextButton";
+import CustomButton from "@components/CustomButton";
 import { useTranslation } from "react-i18next";
 
 export default function Profile() {
@@ -9,9 +9,13 @@ export default function Profile() {
   return (
     <div>
       <h1>Profil</h1>
-      <Button onClick={() => alert("Clicked!")}>
-        {t("settings")}
-      </Button>
+      <CustomButton 
+        children={t("settings")}
+        variant="bg_white_green_outline" 
+        size="icon" 
+        className=""   
+        href="/settings" 
+      />
     </div>
   );
 }
