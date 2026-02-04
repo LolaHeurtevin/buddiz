@@ -26,7 +26,7 @@ export default function TopButtons() {
                 variant="bg_white_green_outline" 
                 size="icon" 
                 className="absolute top-10 right-32 z-[1000]"   
-                href="/test" 
+                href="/personality-tests" 
             />
             <CustomButton 
                 children={<i className="bi bi-bell-fill text-xl" aria-label="Notifications" />}
