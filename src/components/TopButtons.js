@@ -1,42 +1,40 @@
 'use client'
 
 import Link from 'next/link';
+import CustomButton from './CustomButton';
 
 export default function TopButtons() {
     return (
         <div>
-            <Link 
-                href="/chat"
-                style={{
-                    position: 'absolute',
-                    top: '5%',
-                    left: '2%',
-                    zIndex: 1000,
-                }} 
-                className={`px-4 py-2 rounded-xl bg-white text-black, border border-grey-200`}
-            >
-                <i className="bi bi-chat-dots-fill text-3xl" aria-label="Chat" />
-            </Link>
+            <CustomButton 
+                children={<i className="bi bi-chat-dots-fill text-xl" aria-label="Chat" />}
+                variant="bg_white_green_outline" 
+                size="icon" 
+                className="absolute top-10 left-32 z-[1000]"   
+                href="/chat" 
+            />
+            <CustomButton 
+                children={<i className="bi bi-box-arrow-right text-xl leading-none flex items-center justify-center" aria-label="Logout" />}
+                variant="bg_white_green_outline" 
+                size="icon" 
+                className="absolute top-10 left-10 z-[1000]"   
+                href="/logout" 
+            />
 
-            <div className={`flex flex-row gap-4`}
-                style={{
-                    position: 'absolute',
-                    top: '5%',
-                    right: '2%',
-                    zIndex: 1000,
-                }} 
-            >
-                <Link 
-                    href="/test"
-                    className={`px-4 py-2 rounded-xl bg-white text-black border border-cta-200`}>
-                    <i className="bi bi-question-circle-fill text-3xl" aria-label="Personality test" />
-                </Link>
-                <Link 
-                    href="/notifications"
-                    className={`px-4 py-2 rounded-xl bg-white text-black border border-cta-200`}>
-                    <i className="bi bi-bell-fill text-3xl" aria-label="Notifications" />
-                </Link>
-            </div>
+            <CustomButton 
+                children={<i className="bi bi-question-circle-fill text-xl" aria-label="Personality test" />}
+                variant="bg_white_green_outline" 
+                size="icon" 
+                className="absolute top-10 right-32 z-[1000]"   
+                href="/test" 
+            />
+            <CustomButton 
+                children={<i className="bi bi-bell-fill text-xl" aria-label="Notifications" />}
+                variant="bg_white_green_outline" 
+                size="icon" 
+                className="absolute top-10 right-10 z-[1000]"   
+                href="/notifications" 
+            />
         </div>
     );
 }
