@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Button";
+import Button from "@components/Buttons/TextButton";
 import { useTranslation } from "react-i18next";
 
 export default function Profile() {
