@@ -7,7 +7,7 @@ export async function GET(req, { params }) {
       .from("activity")
       .select("*")
       .eq("id", id)
-      .single();
+      //.single();
 
     if (error) throw error;
 
