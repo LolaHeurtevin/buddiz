@@ -1,0 +1,59 @@
+name: CI - Next.js
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.18
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      #- name: Run tests
+       # run: npm test
+
+      - name: Run tests with coverage
+        run: npm test -- --coverage
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: SAST - CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: SCA - Audit npm dependencies
+        run: npm audit --audit-level=high || exit 1
+
+      - name: Build Next.js application
+        run: npm run build
+      
+      - name: Build Docker image
+        run: docker build -t buddiz_next:latest .
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: buddiz_next:latest
+          format: table
+          severity-threshold: HIGH
+
+
