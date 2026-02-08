@@ -11,7 +11,6 @@ export default function CustomButton({ children,
   disabled = false,
   className,
   href,
-  onClick,
   ...props}) {
 
   const baseStyles =
@@ -36,10 +35,9 @@ export default function CustomButton({ children,
       <Link
         disabled={disabled} 
         href={href}
-        onClick={onClick} 
         className={cn(baseStyles, variants[variant], sizes[size], className)}
         {...props}>
-        {children}
+          {children}
       </Link>
   );
 }

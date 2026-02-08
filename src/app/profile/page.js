@@ -9,13 +9,14 @@ export default function Profile() {
   return (
     <div>
       <h1>Profil</h1>
-      <CustomButton 
-        children={t("settings")}
+      <CustomButton
         variant="bg_white_green_outline" 
-        size="icon" 
+        size="lg" 
         className=""   
         href="/settings" 
-      />
+      >
+        {t("settings")}
+      </CustomButton>
     </div>
   );
 }
