@@ -52,7 +52,12 @@ jobs:
         run: npm run build
       
       - name: Build Docker image
-        run: docker build -t buddiz_next:latest .
+        run: |
+          docker build \
+            --build-arg NEXT_PUBLIC_SUPABASE_URL=${{ secrets.SUPABASE_URL }} \
+            --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} \
+            --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            -t buddiz_next:latest .
 
       - name: Scan Docker image with Trivy
         uses: aquasecurity/trivy-action@master
