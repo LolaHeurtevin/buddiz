@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+/*import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 import { db } from '@lib/db'
 
@@ -33,4 +33,4 @@ export async function GET(request) {
     console.error(err)
     return NextResponse.json({ error: err.message }, { status: 500 })
   }
-}
+}*/

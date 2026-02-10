@@ -48,13 +48,6 @@ jobs:
       - name: SCA - Audit npm dependencies
         run: npm audit --audit-level=high || exit 1
 
-      - name: Debug env
-        run: |
-          echo "Supabase URL length: ${#NEXT_PUBLIC_SUPABASE_URL}"
-          echo "Supabase ANON KEY length: ${#NEXT_PUBLIC_SUPABASE_ANON_KEY}"
-          echo "Database URL length: ${#DATABASE_URL}"
-
-
       - name: Build Next.js application
         run: npm run build
       
