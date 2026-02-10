@@ -1,0 +1,10 @@
+[allowlist]
+description = "Allow non-secret test values"
+regexes = [
+  "example",
+  "localhost",
+]
+paths = [
+  ".next/",
+  "node_modules/",
+]
