@@ -1,29 +1,36 @@
-import { supabase } from '@lib/supabaseClient'
+/*import { createClient } from '@supabase/supabase-js'
+import { NextResponse } from 'next/server'
 import { db } from '@lib/db'
 
-export default async function handler(req, res) {
-  if (req.method === 'GET') {
-    try {
-      // Vérifier l'utilisateur connecté via Supabase
-      const token = req.headers.authorization?.split(' ')[1] // récupérer le Bearer token
-      if (!token) return res.status(401).json({ error: 'Token manquant' })
+export async function GET(request) {
+  try {
+    const authHeader = request.headers.get('authorization')
+    const token = authHeader?.split(' ')[1]
 
-      const { data: { user }, error: authError } = await supabase.auth.getUser(token)
-      if (authError || !user) return res.status(401).json({ error: 'Utilisateur non authentifié' })
-
-      // Récupérer les infos utilisateur depuis la table `users`
-      const userData = await db
-        .select()
-        .from('users')
-        .where('id', '=', user.id)
-        .all()
-
-      res.status(200).json({ user: userData[0] }) 
-    } catch (err) {
-      console.error(err)
-      res.status(500).json({ error: err.message })
+    if (!token) {
+      return NextResponse.json({ error: 'Token manquant' }, { status: 401 })
     }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' })
+
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    )
+
+    const { data: { user }, error } = await supabase.auth.getUser(token)
+
+    if (error || !user) {
+      return NextResponse.json({ error: 'Utilisateur non authentifié' }, { status: 401 })
+    }
+
+    const userData = await db
+      .select()
+      .from('users')
+      .where('id', '=', user.id)
+      .all()
+
+    return NextResponse.json({ user: userData[0] })
+  } catch (err) {
+    console.error(err)
+    return NextResponse.json({ error: err.message }, { status: 500 })
   }
-}
+}*/
