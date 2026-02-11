@@ -70,12 +70,12 @@ jobs:
             --build-arg NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }} \
             --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }} \
             --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} \
-            -t buddiz_next:latest .
+            -t ciboulettz/buddiz:latest .
 
       - name: Scan Docker image with Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: buddiz_next:latest
+          image-ref: buddiz:latest
           format: table
           severity-threshold: HIGH
 
