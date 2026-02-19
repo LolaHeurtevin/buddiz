@@ -13,16 +13,16 @@ ENV DATABASE_URL=${DATABASE_URL}
 
 WORKDIR /app
 
-# Install dependencies
+# Installer les dépendances
 COPY package*.json ./
 RUN npm ci
 
-# Copy source
+# Copier le code source
 COPY . .
 
-# Build app
+# Build app avec Webpack (Turbopack désactivé) pour standalone
+ENV NEXT_PRIVATE_TURBOPACK=0
 RUN npm run build -- --output=standalone
-
 
 # ───────────────────────────────
 # STAGE 2: Production
@@ -33,18 +33,18 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Create non-root user
+# Créer un utilisateur non-root
 RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
 
-# Copy only necessary files
-COPY --from=builder /app/.next/standalone ./
+# Copier uniquement les fichiers nécessaires
+COPY --from=builder /app/.next/standalone ./ 
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Install production dependencies only
+# Installer uniquement les dépendances de production
 RUN npm ci --omit=dev
 
-# Change ownership
+# Changer le propriétaire des fichiers
 RUN chown -R nextjs:nextjs /app
 
 USER nextjs
