@@ -22,6 +22,7 @@ COPY . .
 
 # Build app
 RUN npm run build
+RUN npm run export  # ou next build --output standalone
 
 
 # ───────────────────────────────
@@ -37,9 +38,9 @@ ENV NODE_ENV=production
 RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
 
 # Copy only necessary files
-COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/package*.json ./
 
 # Install production dependencies only
 RUN npm ci --omit=dev
@@ -51,4 +52,4 @@ USER nextjs
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
