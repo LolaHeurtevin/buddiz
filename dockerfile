@@ -21,8 +21,7 @@ RUN npm ci
 COPY . .
 
 # Build app
-RUN npm run build
-RUN npm run export  # ou next build --output standalone
+RUN npm run build -- --output=standalone
 
 
 # ───────────────────────────────
