@@ -53,7 +53,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
 
       - name: SCA - Audit npm dependencies
-        run: npm audit --audit-level=high || exit 1
+        run: npm audit --production
 
       - name: Build Next.js application
         run: npm run build
