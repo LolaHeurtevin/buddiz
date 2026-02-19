@@ -3,6 +3,7 @@
 # ───────────────────────────────
 FROM node:20-alpine AS builder
 
+# Variables d'environnement
 ARG NEXT_PUBLIC_SUPABASE_URL
 ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
 ARG DATABASE_URL
@@ -20,9 +21,8 @@ RUN npm ci
 # Copier le code source
 COPY . .
 
-# Build app avec Webpack (Turbopack désactivé) pour standalone
-ENV NEXT_PRIVATE_TURBOPACK=0
-RUN npm run build -- --output=standalone
+# Build de l'app
+RUN npm run build
 
 # ───────────────────────────────
 # STAGE 2: Production
@@ -30,25 +30,24 @@ RUN npm run build -- --output=standalone
 FROM node:20-alpine AS runner
 
 WORKDIR /app
-
 ENV NODE_ENV=production
 
 # Créer un utilisateur non-root
 RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
 
-# Copier uniquement les fichiers nécessaires
-COPY --from=builder /app/.next/standalone ./ 
-COPY --from=builder /app/.next/static ./.next/static
+# Copier les fichiers nécessaires depuis le build
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
 # Installer uniquement les dépendances de production
 RUN npm ci --omit=dev
 
-# Changer le propriétaire des fichiers
+# Changer le propriétaire
 RUN chown -R nextjs:nextjs /app
-
 USER nextjs
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+# Lancer l'application
+CMD ["npm", "start"]
