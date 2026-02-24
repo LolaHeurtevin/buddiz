@@ -40,3 +40,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Docker
+docker-data/
+*.log
+
+# Loki / Prometheus data
+loki-data/
+prometheus-data/
+
+# IDE
+.vscode/
+.idea/
+
+# Secrets
+*.key
+*.crt
+*.p12

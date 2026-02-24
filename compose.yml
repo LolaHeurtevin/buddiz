@@ -1,0 +1,9 @@
+services:
+  buddiz:
+    image: ciboulettz/buddiz:latest
+    container_name: buddiz-app
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
