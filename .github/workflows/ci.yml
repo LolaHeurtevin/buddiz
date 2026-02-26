@@ -79,6 +79,7 @@ jobs:
           image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
           format: table
           severity: HIGH
+          skip-setup-trivy: false
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
