@@ -91,6 +91,10 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "cd /home/ubuntu/apps/buddiz && docker compose -f docker-compose.yml pull buddiz-app && docker compose -f docker-compose.yml up -d"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "
+            cd /home/${{ secrets.VPS_USER }}/apps/buddiz &&
+            docker compose -f docker-compose.yml pull app &&
+            docker compose -f docker-compose.yml up -d app
+          "
 
 
