@@ -84,7 +84,7 @@ jobs:
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
 
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.1
+        uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.VPS_DEPLOY_KEY }}
 
