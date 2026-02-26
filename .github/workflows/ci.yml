@@ -78,7 +78,7 @@ jobs:
         with:
           image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
           format: table
-          severity-threshold: HIGH
+          severity: HIGH
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
