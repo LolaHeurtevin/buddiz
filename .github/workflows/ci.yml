@@ -93,8 +93,9 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "
             cd /home/${{ secrets.VPS_USER }}/apps/buddiz &&
-            docker compose -f docker-compose.yml pull app &&
-            docker compose -f docker-compose.yml up -d app
+            docker compose down --remove-orphans &&
+            docker compose pull app &&
+            docker compose up -d
           "
 
 
