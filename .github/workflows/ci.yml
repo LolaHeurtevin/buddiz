@@ -74,13 +74,28 @@ jobs:
             -t ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest .
 
       - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
           format: table
-          severity-threshold: HIGH
+          severity: HIGH
+          skip-setup-trivy: false
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.VPS_DEPLOY_KEY }}
+
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "
+            cd /home/${{ secrets.VPS_USER }}/apps/buddiz &&
+            docker compose down --remove-orphans &&
+            docker compose pull app &&
+            docker compose up -d
+          "
 
 
