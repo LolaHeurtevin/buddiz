@@ -38,9 +38,9 @@ export default function StepInfos({formData,setFormData,next}){
         onChange={(e)=>setFormData({...formData,pronouns:e.target.value})}
       >
         <option value="">{t("select")}</option>
-        <option value="he">{t("He/Him")}</option>
-        <option value="she">{t("She/Her")}</option>
-        <option value="they">{t("They/Them")}</option>
+        <option value="he/him">{t("He/Him")}</option>
+        <option value="she/her">{t("She/Her")}</option>
+        <option value="they/them">{t("They/Them")}</option>
       </select>
 
       <button onClick={next}>
