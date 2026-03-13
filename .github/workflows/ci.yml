@@ -72,14 +72,16 @@ jobs:
             --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }} \
             --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest .
-
-      - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@0.28.0
+      
+      - name: Run Trivy image scan
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
-          format: table
-          severity: HIGH
-          skip-setup-trivy: false
+          scan-type: image
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: 1
+        continue-on-error: true
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest

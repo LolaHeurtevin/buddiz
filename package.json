@@ -11,8 +11,10 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.15.0",
+    "@supabase/auth-helpers-react": "^0.15.0",
     "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.79.0",
+    "@supabase/supabase-js": "^2.99.1",
     "@types/node": "^24.10.0",
     "bootstrap-icons": "^1.13.1",
     "drizzle-orm": "^0.44.7",

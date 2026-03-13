@@ -17,35 +17,14 @@ export async function POST(req) {
       }), { status: 401 })
     }
 
-    const userId = user.id
-
     const body = await req.json()
-    const {
-      title, description, start_date, start_time,
-      estimated_duration, max_participants,
-      address, zip_code, city, country,
-      lat, lon, category, girl_power, queer_power
-    } = body
+    const { activity_id } = body
 
     const { data, error } = await supabase
-      .from('activity')
+      .from('participate')
       .insert([{
-        title,
-        description,
-        start_date,
-        start_time,
-        estimated_duration,
-        max_participants,
-        address,
-        zip_code,
-        city,
-        country,
-        organizer: userId,
-        lat,
-        lon,
-        category,
-        girl_power,
-        queer_power
+        user_id: user.id,
+        activity_id
       }])
       .select()
 
@@ -67,7 +46,7 @@ export async function GET() {
     const supabase = await supabaseServer()
     
     const { data, error } = await supabase
-      .from('activity')
+      .from('participate')
       .select('*')
 
     if (error) throw error

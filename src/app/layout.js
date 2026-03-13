@@ -1,9 +1,9 @@
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Navbar from "../components/Navbar";
+import NavbarWrapper from "../components/NavbarWrapper";
 import I18nProvider from "../components/I18nProvider";
 import BodyClassController from "../components/BodyClassController";
-import TopButtons from "../components/TopButtons";
+import TopButtonsWrapper from "../components/TopButtonsWrapper";
 
 export const metadata = {
   title: "Buddiz",
@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
       <body>
         <BodyClassController exclude={["/"]} />
         <I18nProvider>
-          <Navbar />
-          <TopButtons />
+          <NavbarWrapper />
+          <TopButtonsWrapper />
           <div className="pb-20">{children}</div>
         </I18nProvider>
       </body>

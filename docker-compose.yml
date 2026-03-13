@@ -1,6 +1,6 @@
 services:
   app:
-    image: ${DOCKERHUB_USERNAME}/buddiz_next:latest
+    image: ${DOCKERHUB_USERNAME}/buddiz:latest
     container_name: buddiz_app
     restart: always
     env_file:
