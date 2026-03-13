@@ -4,12 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+}*/
 
 html, body, #__next {
   height: 100%;
@@ -19,8 +20,6 @@ html, body, #__next {
 @layer base {
   body {
     @apply font-body;
-    background: var(--background);
-    color: var(--foreground);
   }
 
   a {
