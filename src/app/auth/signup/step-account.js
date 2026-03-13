@@ -2,6 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 import { useState } from 'react';
+import Image from "next/image";
 
 export default function StepAccount({formData,setFormData,next,back}){
   const { t } = useTranslation();
@@ -58,30 +59,58 @@ export default function StepAccount({formData,setFormData,next,back}){
 
   return(
     <div>
-      <h2>{t("Sign Up")}</h2>
+      <div className="flex flex-row gap-4">
+        <Image
+          src="/buddy/smile.svg"
+          alt="Buddy Smiling"
+          width={100}
+          height={100}
+          className="mx-auto mb-4"
+        />
+        <div className="flex flex-col">
+          <h3>{t("Want to create an account ?")}</h3>
+          <p>{t("We only use your information to create your account, help you if you run into any issues, and send you exclusive offers (only if you want us to). We promise, no spam or weird sharing.")}</p>
+        </div>
+      </div>
 
       {error && <p className="text-red-500">{error}</p>}
 
-      <input
-        placeholder={t("Email")}
-        value={formData.email}
-        onChange={(e)=>setFormData({...formData,email:e.target.value})}
-      />
+      <div className="mt-4">
+        <input
+          placeholder={t("Email address*")}
+          value={formData.email}
+          onChange={(e)=>setFormData({...formData,email:e.target.value})}
+          className="custom-input"
+        />
+        <p>{t("Example : name.surname@domaine.com")}</p>
 
-      <input
-        type="password"
-        placeholder={t("Password")}
-        value={formData.password}
-        onChange={(e)=>setFormData({...formData,password:e.target.value})}
-      />
+        <input
+          type="password"
+          placeholder={t("Password*")}
+          value={formData.password}
+          onChange={(e)=>setFormData({...formData,password:e.target.value})}
+          className="custom-input mt-4"
+        />
+        <p>{t("Choose a password containing at least 8 characters, 1 uppercase letter, 1 lowercase letter and 1 number")}</p>
+      </div>
 
-      <button onClick={back} disabled={loading}>
-        {t("Back")}
-      </button>
+      <div className="flex flex-row gap-4 mt-8">
+        <button 
+          onClick={back} 
+          disabled={loading}
+          className="rounded-md bg-grey-0 text-black border-2 border-border-buttons-secondary-default px-6 py-3 text-lg"
+        >
+          {t("Back")}
+        </button>
 
-      <button onClick={createAccount} disabled={loading}>
-        {loading ? "Chargement..." : t("Continue")}
-      </button>
+        <button 
+          onClick={createAccount} 
+          disabled={loading}
+          className="rounded-md bg-green-200 text-black border-2 px-6 py-3 text-lg border-border-buttons-secondary-default"
+        >
+          {loading ? t("Loading...") : t("Continue")}
+        </button>
+      </div>
     </div>
   )
 }
