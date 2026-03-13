@@ -16,7 +16,7 @@ export default function SignupPage(){
   const [formData,setFormData] = useState({
     first_name:'',
     last_name:'',
-    age:'',
+    date_of_birth:'',
     gender:'',
     pronouns:'',
     email:'',
