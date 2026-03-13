@@ -3,8 +3,10 @@
   "home": "Carte",
   "profile": "Profil",
   "Activities": "Activités",
+  "Activities near you": "Activités près de toi",
   "personality test": "Test de personnalité",
   "settings": "Paramètres",
+  "My settings": "Mes paramètres",
   "question_1": "Quel est ton hobby préféré ?",
   "question_2": "À quelle fréquence fais-tu de l'exercice ?",
   "question_3": "Si tu pouvais voyager n'importe où, où irais-tu ?",
@@ -96,5 +98,6 @@
   "Past activities": "Activités passées",
   "No past activities": "Aucune activité passée",
   "Upcoming activities": "Activités à venir",
-  "No upcoming activities": "Aucune activité à venir"
+  "No upcoming activities": "Aucune activité à venir",
+  "years": "ans"
 }

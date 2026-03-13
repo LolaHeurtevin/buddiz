@@ -3,8 +3,10 @@
   "home": "Map",
   "profile": "Profile",
   "Activities": "Activities",
+  "Activities near you": "Activities near you",
   "personality test": "Personality Test",
   "settings": "Settings",
+  "My settings": "My settings",
   "question_1": "What is your favorite hobby ?",
   "question_2": "How often do you exercise ?",
   "question_3": "If you could travel anywhere, where would you go ?",
@@ -96,5 +98,6 @@
   "Past activities": "Past activities",
   "No past activities": "No past activities",
   "Upcoming activities": "Upcoming activities",
-  "No upcoming activities": "No upcoming activities"
+  "No upcoming activities": "No upcoming activities",
+  "years": "years"
 }
