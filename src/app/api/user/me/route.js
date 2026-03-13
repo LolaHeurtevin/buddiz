@@ -21,6 +21,8 @@ export async function GET(request) {
       .eq('user_id', userId)
       .single();
 
+      console.log("profileData:", profileData)
+
     if (profileError && profileError.code !== 'PGRST116') throw profileError;
     if (!profileData) {
       return NextResponse.json({ error: 'Profil introuvable' }, { status: 404 });
