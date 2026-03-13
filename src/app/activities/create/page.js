@@ -19,7 +19,6 @@ export default function CreateActivityPage() {
     zip_code: '',
     city: '',
     country: '',
-    organizer: 1,
     lat: null,
     lon: null,
     category: '',
@@ -66,7 +65,6 @@ export default function CreateActivityPage() {
       'zip_code',
       'city',
       'country',
-      'organizer',
       'lat',
       'lon',
       'category',
@@ -83,6 +81,7 @@ export default function CreateActivityPage() {
     try {
       const res = await fetch('/api/activities', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
