@@ -29,7 +29,7 @@ export default function Activity({ params }) {
     }
 
     loadActivities();
-  }, []);
+  }, [id]);
 
   if (loading) return <p>Chargement...</p>;
 

@@ -68,7 +68,6 @@ export default function ActivityCard({ activity, status, reload = () => {} }) {
           key={activity.id}
           className="p-4 border rounded-xl bg-beige-200 shadow-sm text-main-bordeau"
       >
-          <img></img>
           <p className="mb-1 text-xl font-bold">{activity.title}</p>
           <div className="flex flex-row flex-wrap gap-4">
             <div className="justiy-center items-center text-center">

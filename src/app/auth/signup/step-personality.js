@@ -44,11 +44,11 @@ export default function StepPersonality({formData,setFormData}){
   }
 
   if (loading) {
-    return <p>Chargement...</p>
+    return <p>{t("Loading...")}</p>
   }
 
   if (!user) {
-    return <p>Redirection vers l'authentification...</p>
+    return <p>{t("Redirection to authentication...")}</p>
   }
 
   return(
@@ -63,7 +63,7 @@ export default function StepPersonality({formData,setFormData}){
           personality:[...formData.personality,'sport']
         })}
       >
-        J'aime le sport
+        Le sport
       </button>
 
       <button
@@ -72,7 +72,7 @@ export default function StepPersonality({formData,setFormData}){
           personality:[...formData.personality,'culture']
         })}
       >
-        J'aime la culture
+        La culture
       </button>
 
       <button 
