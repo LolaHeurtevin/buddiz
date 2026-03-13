@@ -29,7 +29,7 @@ export function useAuth() {
       } catch (err) {
         console.error("Auth error:", err);
         setUser(null);
-        router.replace("/auth/login");
+        router.replace("/auth");
       } finally {
         setLoading(false);
       }
