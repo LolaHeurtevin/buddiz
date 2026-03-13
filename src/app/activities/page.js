@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import ActivitiesList from "@/components/Activities/ActivitiesList";
 import { useTranslation } from "react-i18next";
+import ActivityViewSwitcher from "@components/Activities/ActivityViewSwitcher";
+import FilterAndCreationButtons from "@components/Activities/FilterAndCreationButtons";
 
 export default function Activities() {
   const { t } = useTranslation();
@@ -33,8 +35,12 @@ export default function Activities() {
 
   return (
     <div>
-      <h1>{t('Activities')}</h1>
+      <FilterAndCreationButtons />
+      <h1>{t('Activities near you')}</h1>
       <ActivitiesList data={data} />
+      <div className="fixed bottom-24 right-4 z-[9999] md:bottom-28 md:right-8">
+              <ActivityViewSwitcher />
+            </div>
     </div>
   );
 }
