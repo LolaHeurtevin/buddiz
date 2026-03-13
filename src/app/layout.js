@@ -1,9 +1,11 @@
+// src/app/layout.js
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import NavbarWrapper from "../components/NavbarWrapper";
 import I18nProvider from "../components/I18nProvider";
 import BodyClassController from "../components/BodyClassController";
 import TopButtonsWrapper from "../components/TopButtonsWrapper";
+import AuthLayoutClient from "../components/AuthLayoutClient";
 
 export const metadata = {
   title: "Buddiz",
@@ -24,11 +26,11 @@ export default function RootLayout({ children }) {
         <I18nProvider>
           <NavbarWrapper />
           <TopButtonsWrapper />
-          <div className="pb-20">{children}</div>
+          <AuthLayoutClient>
+            <div className="pb-20">{children}</div>
+          </AuthLayoutClient>
         </I18nProvider>
       </body>
     </html>
   );
 }
-
-
