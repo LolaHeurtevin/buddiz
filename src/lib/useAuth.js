@@ -22,7 +22,7 @@ export function useAuth() {
         const { data, error } = await supabase.auth.getUser();
         if (error || !data?.user) {
           setUser(null);
-          router.replace("/auth/login");
+          router.replace("/auth");
         } else {
           setUser(data.user);
         }
