@@ -77,10 +77,11 @@ jobs:
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: image
-          image-ref: buddiz:latest
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
           severity: CRITICAL,HIGH
           ignore-unfixed: true
           exit-code: 1
+          cache: true
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/buddiz:latest
