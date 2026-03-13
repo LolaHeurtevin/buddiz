@@ -25,6 +25,7 @@ export default function CustomButton({ children,
     bg_green: 'radius-radius-lg bg-green-200 text-black border border-2 border-border-buttons-secondary-default',
     icon_toggle: 'bg-red-100 text-black rounded-xl p-0 hover:bg-red-200 border-none',
     icon_toggle_active: 'bg-red-700 text-white rounded-xl p-0 border-none',
+    sign_in: "bg-beige-600 text-black hover:bg-beige-700",
   }
 
   const sizes = {
@@ -34,6 +35,7 @@ export default function CustomButton({ children,
     icon: 'w-16 h-16',
     icon_small: 'w-14 h-14',
     icon_big: 'w-16 h-16',
+    full: 'w-full md:w-auto px-6 py-3 text-lg',
   }
 
   return (
