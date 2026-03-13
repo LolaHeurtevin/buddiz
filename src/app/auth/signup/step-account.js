@@ -1,6 +1,5 @@
 "use client"
 
-import { supabase } from '@/lib/supabaseClient'
 import { useTranslation } from "react-i18next";
 import { useState } from 'react';
 
@@ -14,39 +13,26 @@ export default function StepAccount({formData,setFormData,next,back}){
     setError(null)
 
     try {
-      // Créer l'utilisateur
-      const { data, error: authError } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options:{
-          data:{
-            first_name: formData.first_name,
-            last_name: formData.last_name,
-            gender: formData.gender,
-            pronouns: formData.pronouns,
-            age: formData.age
-          }
-        }
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          gender: formData.gender,
+          pronouns: formData.pronouns,
+          date_of_birth: formData.date_of_birth
+        })
       })
 
-      if(authError) throw authError
+      const data = await response.json()
 
-      // Créer le profil utilisateur
-      if (data?.user?.id) {
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert([{
-            id: data.user.id,
-            email: formData.email,
-            first_name: formData.first_name,
-            last_name: formData.last_name,
-            gender: formData.gender,
-            pronouns: formData.pronouns,
-            date_of_birth: formData.date_of_birth,
-            //personality: []
-          }])
-
-        if (profileError) throw profileError
+      if (!response.ok) {
+        throw new Error(data.error || 'Erreur lors de la création du compte')
       }
 
       next()
