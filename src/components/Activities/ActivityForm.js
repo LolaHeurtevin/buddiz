@@ -14,8 +14,11 @@ export default function ActivityForm( { onChange, formData = {} } ) {
                 onChange={onChange}
             >
                 <option value="">{t("Select a category")}</option>
-                <option value="outdoor_activity">{t("Outdoor activity")}</option>
-                <option value="indoor_activity">{t("Indoor activity")}</option>
+                <option value="Outdoor activity">{t("Outdoor activity")}</option>
+                <option value="Sport outing">{t("Sport outing")}</option>
+                <option value="Food outing">{t("Food outing")}</option>
+                <option value="Cultural activity">{t("Cultural activity")}</option>
+                <option value="Manual activity">{t("Manual activity")}</option>
             </select>
 
             <label className="block text-sm font-medium mb-1" htmlFor="title">{t("title")}</label>
