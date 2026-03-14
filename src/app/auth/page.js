@@ -15,15 +15,15 @@ export default function AuthPage() {
       <Image
         src="/buddy/smile.svg"
         alt="Buddy Smiling"
-        width={200}
-        height={200}
+        width={100}
+        height={100}
         className="mx-auto mb-8"
       />
       <Image
         src="/buddiz_white.svg"
         alt="Buddiz logo"
-        width={200}
-        height={200}
+        width={100}
+        height={100}
         className="mx-auto mb-8"
       />
 
