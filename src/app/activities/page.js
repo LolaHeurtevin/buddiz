@@ -31,7 +31,7 @@ export default function Activities() {
     loadActivities();
   }, []);
 
-  if (loading) return <p>Chargement...</p>;
+  if (loading) return <p>{t('Loading...')}</p>;
 
   return (
     <div>
