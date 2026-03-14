@@ -42,7 +42,13 @@ html, body, #__next {
   }
 
   h2 {
-    @apply font-heading text-4xl font-semibold;
+    /*@apply font-heading text-4xl font-semibold;*/
+    font-family: var(--Family-Heading, Dongle);
+    font-size: var(--Heading-S, 40px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: var(--height-Heading, 28px); /* 70% */
+    letter-spacing: -0.2px;
   }
 
   h3 {
@@ -71,6 +77,11 @@ html, body, #__next {
 
 @layer components {
 
+}
+
+.activity-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .custom-input {
