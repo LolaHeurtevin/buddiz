@@ -52,13 +52,17 @@
   "Change organizer": "Change organizer",
   "Activity deleted": "Activity deleted",
   "Loading": "Loading",
+  "Loading...": "Loading...",
   "Error": "Error",
   "If you want to maintain the activity for the other users but no longer wish to be the organizer, click \"Change organizer\"": "If you want to maintain the activity for the other users but no longer wish to be the organizer, click \"Change organizer\".",
   "Girl Power": "Girl Power",
   "Queer Power": "Queer Power",
   "Category": "Category",
   "Outdoor activity": "Outdoor activity",
-  "Indoor activity": "Indoor activity",
+  "Sport outing": "Sport outing",
+  "Food outing": "Food outing",
+  "Cultural activity": "Cultural activity",
+  "Manual activity": "Manual activity",
   "Select a category": "Select a category",
   "My activities": "My activities",
   "Welcome to Buddiz": "Welcome to Buddiz",
@@ -118,5 +122,6 @@
   "You already have an account ? Log in !": "You already have an account ? Log in !",
   "Your buddiz are waiting for you !": "Your buddiz are waiting for you !",
   "Don't have an account ?": "Don't have an account ?",
-  "Sign up": "Sign up"
+  "Sign up": "Sign up",
+  "I participate": "I participate"
 }
