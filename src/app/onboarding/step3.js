@@ -1,9 +1,17 @@
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-export default function Step2({next}){
+export default function Step3({skip}){
   const { t } = useTranslation();
   return(
-    <div>
+    <div className="flex flex-col">
+      <Image
+        src="/buddy/smile.svg"
+        alt="Buddy Smiling"
+        width={100}
+        height={100}
+        className="mx-auto mb-4"
+      />
       <div className="bg-red-500 rounded-t-lg p-4 mx-[-34px]">
         <h3 className="text-white">{t("Break the ice before taking the plunge")}</h3>
 
@@ -11,17 +19,10 @@ export default function Step2({next}){
 
         <div className="flex flex-row gap-4 mt-4">
           <button 
-            onClick={next}
-            className="radius-radius-lg bg-grey-0 text-black border-2 border-border-buttons-secondary-default rounded-md py-2 px-4 w-[50%]"
-            >
-            {t("Skip")}
-          </button>
-
-          <button 
-            onClick={next}
-            className="bg-beige-600 border-2 border-beige-600 text-black hover:bg-beige-700 rounded-md py-2 px-4 w-[50%]"
+            onClick={skip}
+            className="bg-beige-600 border-2 border-beige-600 text-black hover:bg-beige-700 rounded-md py-2 px-4 w-[100%]"
           >
-            {t("Discover the app")}
+            {t("Let me discover the app")}
           </button>
         </div>
         

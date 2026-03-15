@@ -1,9 +1,17 @@
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 export default function Step2({next, skip}){
   const { t } = useTranslation();
   return(
-    <div>
+    <div className="flex flex-col">
+      <Image
+        src="/buddy/smile.svg"
+        alt="Buddy Smiling"
+        width={100}
+        height={100}
+        className="mx-auto mb-4"
+      />
       <div className="bg-red-500 rounded-t-lg p-4 mx-[-34px]">
         <h3 className="text-white">{t("A safe space to be yourself")}</h3>
 

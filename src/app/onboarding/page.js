@@ -28,6 +28,6 @@ export default function Onboarding(){
 
   if(step===1) return <Step1 next={next} skip={skip}/>
   if(step===2) return <Step2 next={next} skip={skip}/>
-  if(step===3) return <Step3/>
+  if(step===3) return <Step3 skip={skip}/>
 
 }
