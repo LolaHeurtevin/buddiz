@@ -22,16 +22,18 @@ export default function StepInfos({formData,setFormData,next}){
       </div>
 
       <div>
-        <h3 className="flex flex-row gap-1 flex-wrap">
+        <p className="flex flex-row gap-1 flex-wrap items-center">
           {t("My name is")}
           <input
             placeholder={t("First Name")}
             onChange={(e)=>setFormData({...formData,first_name:e.target.value})}
+            style={{ width: "25%" }}
           />
 
           <input
             placeholder={t("Last Name")}
             onChange={(e)=>setFormData({...formData,last_name:e.target.value})}
+            style={{ width: "25%" }}
           />
 
           {t(", I was born on")}
@@ -60,7 +62,7 @@ export default function StepInfos({formData,setFormData,next}){
             <option value="she/her">{t("She/Her")}</option>
             <option value="they/them">{t("They/Them")}</option>
           </select>
-        </h3>
+        </p>
       </div>
 
       <button 
