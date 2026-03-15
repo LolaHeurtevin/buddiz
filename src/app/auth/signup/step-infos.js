@@ -60,13 +60,13 @@ export default function StepInfos({formData,setFormData,next}){
           {t("My name is")}
 
           <input
-            placeholder={t("First Name")}
+            placeholder={t("First name")}
             onChange={(e)=>setFormData({...formData,first_name:e.target.value})}
             style={{ width: "25%" }}
           />
 
           <input
-            placeholder={t("Last Name")}
+            placeholder={t("Last name")}
             onChange={(e)=>setFormData({...formData,last_name:e.target.value})}
             style={{ width: "25%" }}
           />
