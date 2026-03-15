@@ -103,6 +103,7 @@ html, body, #__next {
   background: var(--surface-states-default, #ECECEC);
   display: flex;
   height: 48px;
+  width: 100%;
   max-width: 358px;
   max-height: 48px;
   padding: var(--spacing-positive-m, 12px) var(--spacing-positive-md, 16px);
