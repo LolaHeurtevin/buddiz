@@ -104,7 +104,7 @@ export default function StepAccount({formData,setFormData,next,back}){
         <button 
           onClick={back} 
           disabled={loading}
-          className="rounded-md bg-grey-0 text-black border-2 border-border-buttons-secondary-default px-6 py-3 text-lg"
+          className="rounded-md bg-grey-0 text-black border-2 border-border-buttons-secondary-default px-6 py-3 text-lg w-[50%]"
         >
           {t("Back")}
         </button>
@@ -112,7 +112,7 @@ export default function StepAccount({formData,setFormData,next,back}){
         <button 
           onClick={createAccount} 
           disabled={loading}
-          className="rounded-md bg-green-200 text-black border-2 px-6 py-3 text-lg border-border-buttons-secondary-default"
+          className="rounded-md bg-green-200 text-black border-2 px-6 py-3 text-lg border-border-buttons-secondary-default w-[50%]"
         >
           {loading ? t("Loading...") : t("Continue")}
         </button>

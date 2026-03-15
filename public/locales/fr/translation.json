@@ -139,5 +139,7 @@
   "Let me discover the app" : "Je découvre l'app",
   "Choose your language": "Choisis ta langue",
   "Activities list view": "Vue liste des activités",
-  "Activities map view": "Vue carte des activités"
+  "Activities map view": "Vue carte des activités",
+  "You don't have any new notifications": "Tu n'as pas de nouvelles notifications",
+  "You don't have any active conversations right now": "Tu n'as pas de conversations actives pour le moment"
 }

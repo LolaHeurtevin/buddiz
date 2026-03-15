@@ -13,6 +13,7 @@ export default function StepPersonality({formData,setFormData}){
 
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
+  const [selected, setSelected] = useState(null)
 
   const finishSignup = async ()=>{
 
@@ -54,41 +55,53 @@ export default function StepPersonality({formData,setFormData}){
 
         <h3>{t("During your free time, you prefer...")}</h3>
         <button
-          onClick={()=>setFormData({
-            ...formData,
-            personality:[...formData.personality,'drinks_restaurent']
-          })}
+          onClick={()=>{
+            setSelected('drinks_restaurent')
+            setFormData({...formData, personality:['drinks_restaurent']})
+          }}
           className="grey-button"
+          style={{
+            backgroundColor: selected === 'drinks_restaurent' ? 'var(--grey-500)' : ''
+          }}
         >
           {t("Getting drinks / going to the restaurent whith friends")}
         </button>
 
         <button
-          onClick={()=>setFormData({
-            ...formData,
-            personality:[...formData.personality,'creative']
-          })}
+          onClick={()=>{
+            setSelected('creative')
+            setFormData({...formData, personality:['creative']})
+          }}
           className="grey-button"
+          style={{
+            backgroundColor: selected === 'creative' ? 'var(--grey-500)' : ''
+          }}
         >
           {t("A creative activity")}
         </button>
 
         <button
-          onClick={()=>setFormData({
-            ...formData,
-            personality:[...formData.personality,'walk']
-          })}
+          onClick={()=>{
+            setSelected('walk')
+            setFormData({...formData, personality:['walk']})
+          }}
           className="grey-button"
+          style={{
+            backgroundColor: selected === 'walk' ? 'var(--grey-500)' : ''
+          }}
         >
           {t("A walk outdoor")}
         </button>
 
         <button
-          onClick={()=>setFormData({
-            ...formData,
-            personality:[...formData.personality,'chill_inside']
-          })}
+          onClick={()=>{
+            setSelected('chill_inside')
+            setFormData({...formData, personality:['chill_inside']})
+          }}
           className="grey-button"
+          style={{
+            backgroundColor: selected === 'chill_inside' ? 'var(--grey-500)' : ''
+          }}
         >
           {t("A chill activity inside")}
         </button>
@@ -97,7 +110,7 @@ export default function StepPersonality({formData,setFormData}){
       <button 
         onClick={finishSignup}
         disabled={submitting}
-        className="rounded-md bg-green-200 text-black border-2 border-border-buttons-secondary-default"
+        className="rounded-md py-2 px-4 bg-green-200 text-black border-2 border-border-buttons-secondary-default"
       >
         {submitting ? t("Loading...") : t("Continue")}
       </button>

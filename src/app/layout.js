@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className="bg-[url(/BG.svg)]">
+      <body className="bg-[url(/BG.svg)] bg-cover">
         <BodyClassController exclude={["/"]} />
         <I18nProvider>
           <NavbarWrapper />
