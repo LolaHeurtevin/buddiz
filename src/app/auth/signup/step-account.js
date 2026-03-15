@@ -13,6 +13,12 @@ export default function StepAccount({formData,setFormData,next,back}){
     setLoading(true)
     setError(null)
 
+    if (!formData.email || !formData.password) {
+      setError(t("Please fill in all fields"))
+      setLoading(false)
+      return
+    }
+
     try {
       const response = await fetch('/api/auth/signup', {
         method: 'POST',

@@ -6,10 +6,10 @@ export default function Step2({next, skip}){
   return(
     <div className="flex flex-col">
       <Image
-        src="/buddy/smile.svg"
-        alt="Buddy Smiling"
-        width={100}
-        height={100}
+        src="/onboarding/onboarding-img-power.svg"
+        alt="Queer power"
+        width={350}
+        height={350}
         className="mx-auto mb-4"
       />
       <div className="bg-red-500 rounded-t-lg p-4 mx-[-34px]">
