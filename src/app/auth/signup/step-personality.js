@@ -1,23 +1,31 @@
 "use client"
 
+import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from "react-i18next";
 import { useAuth } from '@/lib/useAuth'
-import { useState } from 'react';
 
 export default function StepPersonality({formData,setFormData}){
-  const { t } = useTranslation();
+
+  const { t } = useTranslation()
   const router = useRouter()
   const { user, loading } = useAuth()
+
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
 
+  // 🔹 redirection automatique
+  useEffect(()=>{
+    if(!loading && !user){
+      router.push('/auth/login')
+    }
+  },[user,loading,router])
+
   const finishSignup = async ()=>{
-    // Vérifier que l'utilisateur est authentifié
+
     if (!user) {
       setError('Vous devez être connecté pour continuer')
-      router.push('/auth/login')
       return
     }
 
@@ -25,18 +33,12 @@ export default function StepPersonality({formData,setFormData}){
     setError(null)
 
     try {
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({
-          personality: formData.personality
-        })
-        .eq('id', user.id)
-
-      if (updateError) throw updateError
+      // sauvegarde personnalité
 
       router.push('/onboarding')
+
     } catch (err) {
-      console.error('Erreur lors de la sauvegarde:', err)
+      console.error(err)
       setError(err.message || 'Erreur lors de la sauvegarde')
     } finally {
       setSubmitting(false)
@@ -53,6 +55,7 @@ export default function StepPersonality({formData,setFormData}){
 
   return(
     <div>
+
       <h2>{t("Personality test")}</h2>
 
       {error && <p className="text-red-500">{error}</p>}
@@ -81,6 +84,7 @@ export default function StepPersonality({formData,setFormData}){
       >
         {submitting ? 'En cours...' : 'Terminer'}
       </button>
+
     </div>
   )
 }
