@@ -1,23 +1,40 @@
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-export default function Step1({next}){
+export default function Step1({next, skip}){
   const { t } = useTranslation();
   return(
 
-    <div>
+    <div className="flex flex-col">
+      <Image
+        src="/buddy/smile.svg"
+        alt="Buddy Smiling"
+        width={100}
+        height={100}
+        className="mx-auto mb-4"
+      />
+      <div className="bg-red-500 rounded-t-lg p-4 mx-[-34px]">
+        <h3 className="text-white">{t("Your map, your Buddiz, your activities")}</h3>
 
-      <h1>{t("Your map, your Buddiz, your activities")}</h1>
+        <p className="text-white">{t("Everything happening next to you, in the blink of an eye. Filter them by style, date or ambiance")}</p>
 
-      <p>{t("Everything happening next to you, in the blink of an eye. Filter them by style, date or ambiance")}</p>
+        <div className="flex flex-row gap-4 mt-4">
+          <button 
+            onClick={skip}
+            className="radius-radius-lg bg-grey-0 text-black border-2 border-border-buttons-secondary-default rounded-md py-2 px-4 w-[50%]"
+            >
+            {t("Skip")}
+          </button>
 
-      <button onClick={next}>
-        {t("Skip")}
-      </button>
+          <button 
+            onClick={next}
+            className="bg-beige-600 border-2 border-beige-600 text-black hover:bg-beige-700 rounded-md py-2 px-4 w-[50%]"
+          >
+            {t("Continue")}
+          </button>
+        </div>
 
-      <button onClick={next}>
-        {t("Continue")}
-      </button>
-
+      </div>
     </div>
 
   )

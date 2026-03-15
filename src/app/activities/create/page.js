@@ -4,6 +4,7 @@ import { title } from 'process';
 import ActivityForm from '@components/Activities/ActivityForm'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Image from 'next/image';
 
 export default function CreateActivityPage() {
   const { t } = useTranslation();
@@ -104,7 +105,17 @@ export default function CreateActivityPage() {
 
   return (
     <div>
-      <h1>{t('Create an activity')}</h1>
+      <div className="flex flex-row gap-4">
+        <Image
+          src="/buddy/wink.svg"
+          alt="Buddy Winking"
+          width={100}
+          height={100}
+          className="mx-auto mb-4"
+        />
+        <h1>{t('Are we creating an activity ?')}</h1>
+      </div>
+
       <form 
         onSubmit={handleSubmit} 
         className="space-y-4">

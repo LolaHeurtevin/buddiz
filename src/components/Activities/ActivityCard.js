@@ -3,71 +3,40 @@
 import { useTranslation } from "react-i18next";
 import React from "react";
 import Link from "next/link";
+import { participate, deleteParticipation } from "@/lib/participationFunctions";
+import Image from "next/image";
 
 export default function ActivityCard({ activity, status, reload = () => {} }) {
   const { t } = useTranslation();
 
-  async function participate(e) {
-    e.stopPropagation(); // Prevent the click event from propagating to the Link
-    e.preventDefault(); // Prevent default behavior of the Link
-        
-    try {
-      const res = await fetch('/api/participations', {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ activity_id: activity.id }),
-      })
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Erreur lors de l'inscription à l'activité")
-      } else {
-        reload()
-      }
   
-    } catch (err) {
-      console.error(err)
-    } 
-  }
-
-  async function deleteParticipation(e) {
-    e.stopPropagation(); // Prevent the click event from propagating to the Link
-    e.preventDefault(); // Prevent default behavior of the Link
-    console.log("unparticipate");
-        
-    try {
-      const res = await fetch('/api/participations/me', {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ activity_id: activity.id }),
-      })
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Erreur lors de l'inscription à l'activité")
-      } else {
-        reload()
-      }
-  
-    } catch (err) {
-      console.error(err)
-    } 
-  }
 
   return (
     <Link href={`/activities/${encodeURIComponent(JSON.stringify(activity.id))}`} key={activity.id}>
       <div
-          key={activity.id}
-          className="p-4 border rounded-xl bg-beige-200 shadow-sm text-main-bordeau"
+        key={activity.id}
+        className="p-4 rounded-xl bg-beige-200 shadow-sm text-main-bordeau flex flex-row gap-4"
       >
+        <Image
+          src={
+            activity?.category === "Outdoor activity"
+              ? "/categories/outdoor_activity.jpg"
+              : activity?.category === "Sport outing"
+              ? "/categories/sport_activity.jpg"
+              : activity?.category === "Food outing"
+              ? "/categories/food_activity.jpg"
+              : activity?.category === "Manual activity"
+              ? "/categories/manual_activity.jpg"
+              : activity?.category === "Cultural activity"
+              ? "/categories/cultural_activity.jpg"
+              : "/categories/default.jpg"
+          }
+          alt={activity.title}
+          width={144}
+          height={144}
+          className="rounded-md mb-4 object-cover"
+        />
+        <div className="flex flex-col gap-2">
           <p className="mb-1 text-xl font-bold">{activity.title}</p>
           <div className="flex flex-row flex-wrap gap-4">
             <div className="justiy-center items-center text-center">
@@ -95,23 +64,25 @@ export default function ActivityCard({ activity, status, reload = () => {} }) {
             status === "all"
               ? 
                 <button
-                  onClick={participate}
-                  className={`w-16 h-16 rounded-xl bg-green-200 text-black self-end ml-auto`}
+                  onClick={e => participate(e, activity, reload)}
+                  className={`w-12 h-12 rounded-xl bg-green-200 text-black self-end ml-auto`}
                   style={{ display: 'block' }}
                 >
-                  <i className="bi bi-plus text-3xl" aria-label="Participate" />
+                  <i className="bi bi-plus text-xl" aria-label="Participate" />
                 </button>
               : status === "upcoming"
                 ?
                   <button
-                    onClick={deleteParticipation}
+                    onClick={e => deleteParticipation(e, activity, reload)}
                     className={`px-4 py-2 rounded-xl bg-cta-200 text-black self-end ml-auto`}
                     style={{ display: 'block' }}
                   >
-                    <i className="bi bi-trash3-fill text-3xl" aria-label="Delete participation" />
+                    <i className="bi bi-trash3-fill text-xl" aria-label="Delete participation" />
                   </button>
                 : null           
           }
+          
+        </div>
       </div>
     </Link>
   );

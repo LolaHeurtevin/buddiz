@@ -1,86 +1,107 @@
 "use client"
 
-import { supabase } from '@/lib/supabaseClient'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from "react-i18next";
 import { useAuth } from '@/lib/useAuth'
-import { useState } from 'react';
+import Image from 'next/image';
 
 export default function StepPersonality({formData,setFormData}){
-  const { t } = useTranslation();
+
+  const { t } = useTranslation()
   const router = useRouter()
-  const { user, loading } = useAuth()
+
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
 
   const finishSignup = async ()=>{
-    // Vérifier que l'utilisateur est authentifié
-    if (!user) {
-      setError('Vous devez être connecté pour continuer')
-      router.push('/auth/login')
-      return
-    }
 
     setSubmitting(true)
     setError(null)
 
     try {
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({
-          personality: formData.personality
-        })
-        .eq('id', user.id)
-
-      if (updateError) throw updateError
+      // sauvegarde personnalité
 
       router.push('/onboarding')
+
     } catch (err) {
-      console.error('Erreur lors de la sauvegarde:', err)
+      console.error(err)
       setError(err.message || 'Erreur lors de la sauvegarde')
     } finally {
       setSubmitting(false)
     }
   }
 
-  if (loading) {
-    return <p>{t("Loading...")}</p>
-  }
-
-  if (!user) {
-    return <p>{t("Redirection to authentication...")}</p>
-  }
-
   return(
-    <div>
-      <h2>{t("Personality test")}</h2>
+    <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-row">
+          <Image
+            src="/buddy/smile.svg"
+            alt="Buddy Smiling"
+            width={100}
+            height={100}
+            className="mx-auto mb-4"
+          />
+          <div className="flex flex-col">
+            <h3>{t("Shall we check out your profile together ?")}</h3>
+            <p className="text-lg">{t("A few quick questions to get to know you better.")}</p>
+          </div>
+        </div>
 
-      {error && <p className="text-red-500">{error}</p>}
 
-      <button
-        onClick={()=>setFormData({
-          ...formData,
-          personality:[...formData.personality,'sport']
-        })}
-      >
-        Le sport
-      </button>
+        {error && <p className="text-red-500">{error}</p>}
 
-      <button
-        onClick={()=>setFormData({
-          ...formData,
-          personality:[...formData.personality,'culture']
-        })}
-      >
-        La culture
-      </button>
+        <h3>{t("During your free time, you prefer...")}</h3>
+        <button
+          onClick={()=>setFormData({
+            ...formData,
+            personality:[...formData.personality,'drinks_restaurent']
+          })}
+          className="grey-button"
+        >
+          {t("Getting drinks / going to the restaurent whith friends")}
+        </button>
+
+        <button
+          onClick={()=>setFormData({
+            ...formData,
+            personality:[...formData.personality,'creative']
+          })}
+          className="grey-button"
+        >
+          {t("A creative activity")}
+        </button>
+
+        <button
+          onClick={()=>setFormData({
+            ...formData,
+            personality:[...formData.personality,'walk']
+          })}
+          className="grey-button"
+        >
+          {t("A walk outdoor")}
+        </button>
+
+        <button
+          onClick={()=>setFormData({
+            ...formData,
+            personality:[...formData.personality,'chill_inside']
+          })}
+          className="grey-button"
+        >
+          {t("A chill activity inside")}
+        </button>
+      </div>
 
       <button 
         onClick={finishSignup}
         disabled={submitting}
+        className="rounded-md bg-green-200 text-black border-2 border-border-buttons-secondary-default"
       >
-        {submitting ? 'En cours...' : 'Terminer'}
+        {submitting ? t("Loading...") : t("Continue")}
       </button>
+
     </div>
   )
 }

@@ -38,7 +38,7 @@ export default function Home() {
             aria-label="Fermer la fiche activité"
           />
           <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[9999] w-[90%] max-w-md">
-            <ActivityCard activity={selectedActivity} />
+            <ActivityCard activity={selectedActivity} status="all" />
           </div>
         </>
       )}

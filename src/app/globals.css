@@ -42,7 +42,13 @@ html, body, #__next {
   }
 
   h2 {
-    @apply font-heading text-4xl font-semibold;
+    /*@apply font-heading text-4xl font-semibold;*/
+    font-family: var(--Family-Heading, Dongle);
+    font-size: var(--Heading-S, 40px);
+    font-style: normal;
+    font-weight: 700;
+    /*line-height: var(--height-Heading, 28px); /* 70% */
+    letter-spacing: -0.2px;
   }
 
   h3 {
@@ -51,7 +57,7 @@ html, body, #__next {
     font-size: var(--Heading-XS, 32px);
     font-style: normal;
     font-weight: 700;
-    line-height: var(--height-Heading, 28px); /* 87.5% */
+    /*line-height: 1em; /* var(--height-Heading, 28px);  87.5% */
     letter-spacing: -0.16px;
   }
 
@@ -71,6 +77,24 @@ html, body, #__next {
 
 @layer components {
 
+}
+
+.grey-button {
+  border-radius: var(--radius-m);
+  border: 1px solid var(--grey-200, #DADADA);
+  background: var(--surface-buttons-secondary-default, #F6F6F6);
+  margin-bottom: 8px;
+  width: 358px;
+  height: 56px;
+  min-height: 56px;
+  padding: var(--spacing-positive-sm, 8px) var(--spacing-positive-md, 16px);
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .custom-input {
