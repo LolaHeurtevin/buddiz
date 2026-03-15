@@ -110,7 +110,7 @@ export default function StepPersonality({formData,setFormData}){
       <button 
         onClick={finishSignup}
         disabled={submitting}
-        className="rounded-md py-2 px-4 bg-green-200 text-black border-2 border-border-buttons-secondary-default"
+        className="rounded-md py-2 px-4 bg-green-200 text-black border-2 border-border-buttons-secondary-default mt-4"
       >
         {submitting ? t("Loading...") : t("Continue")}
       </button>
