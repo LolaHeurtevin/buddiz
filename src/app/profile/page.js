@@ -48,7 +48,7 @@ export default function Profile() {
 
   return (
     <div>
-      <Image src="/buddy/buddy_avatar_plain.png" alt="Profile Image" width={600} height={600} />
+      <Image src="/buddy/buddy_avatar_plain.png" alt="Profile Image" width={600} height={600} className="rounded-lg" />
       <span className="flex flex-row items-center gap-4">
         <h1>{userData.profile.first_name || "Utilisateur"}</h1> 
         {age !== null && <p>{age} {t("years")}</p>}
