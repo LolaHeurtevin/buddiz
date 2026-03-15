@@ -2,13 +2,10 @@
 
 import CustomButton from '@components/CustomButton';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'
 import { useTranslation } from "react-i18next";
 
 export default function AuthPage() {
   const { t } = useTranslation();
-
-  const router = useRouter()
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-6 p-4">
