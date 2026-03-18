@@ -13,13 +13,13 @@ export default function FilterAndCreationButtons() {
                 <i className="bi bi-plus text-2xl flex items-center justify-center" aria-label="Create activity" />
             </CustomButton>
 
-            <CustomButton
+            {/*<CustomButton
                 variant="bg_white_green_outline" 
                 size="icon" 
                 href="#" 
             >
                 <i className="bi bi-filter text-2xl flex items-center justify-center" aria-label="Filter" />
-            </CustomButton>
+            </CustomButton>*/}
         </div>
     );
 }

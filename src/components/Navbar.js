@@ -17,9 +17,9 @@ export default function Navbar() {
         <Link href="/dashboard" className="flex flex-col items-center justify-center w-12 h-12 hover:opacity-70 transition-opacity" aria-label={t("Activities")}>
           <i className="bi bi-pass-fill text-xl text-red-500"></i>
         </Link>
-        <Link href="/shop" className="flex flex-col items-center justify-center w-12 h-12 hover:opacity-70 transition-opacity" aria-label={t("shop")}>
+        {/*<Link href="/shop" className="flex flex-col items-center justify-center w-12 h-12 hover:opacity-70 transition-opacity" aria-label={t("shop")}>
           <i className="bi bi-bag-fill text-xl text-red-500"></i>
-        </Link>
+        </Link>*/}
         <Link href="/profile" className="flex flex-col items-center justify-center w-12 h-12 hover:opacity-70 transition-opacity" aria-label={t("profile")}>
           <i className="bi bi-person-circle text-xl text-red-500"></i>
         </Link>
