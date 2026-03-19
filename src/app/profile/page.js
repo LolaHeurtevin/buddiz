@@ -43,8 +43,8 @@ export default function Profile() {
 
   const age = userData?.profile?.date_of_birth ? calculateAge(userData.profile.date_of_birth) : null;
 
-  if (loading) return <div>Chargement...</div>
-  if (error) return <div>Erreur: {error}</div>
+  if (loading) return <div>{t("Loading...")}</div>
+  if (error) return <div>{t("Error")} {error}</div>
 
   return (
     <div>
